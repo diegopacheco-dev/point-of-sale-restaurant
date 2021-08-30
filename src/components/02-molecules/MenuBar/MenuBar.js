@@ -1,42 +1,43 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import ButtonWithIcon from "../../01-atoms/Buttons/ButtonWithIcon/ButtonWithIcon";
 
 const MenuBar = () => {
-    const history = useHistory();
 
   return (
     <div>
       <ButtonWithIcon
         name="Vender"
-        type="categoria"
-        onClick={() => history.push("/")}
+        type="menu"
+        onClick={""}
         id="/"
-        idSelected={history.location.path}
+        idSelected={"/"}
         nameIcon="dish"
         sizeIcon="md"
       />
       <ButtonWithIcon
         name="Pedidos"
-        onClick={() => history.push("/pedidos")}
+        type="menu"
+        onClick={""}
+        idSelected={""}
         id="/pedidos"
-        idSelected={history.location.path}
         nameIcon="time-five"
         sizeIcon="md"
       />
       <ButtonWithIcon
         name="Clientes"
-        onClick={() => history.push("/clientes")}
+        type="menu"
+        onClick={""}
         id="/clientes"
-        idSelected={history.location.path}
+        idSelected={""}
         nameIcon="group"
         sizeIcon="md"
       />
       <ButtonWithIcon
         name="Administrar"
-        onClick={() => history.push("/administrar")}
+        type="menu"
+        onClick={""}
         id="/administrar"
-        idSelected={history.location.path}
+        idSelected={""}
         nameIcon="wrench"
         sizeIcon="md"
       />

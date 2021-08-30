@@ -8,12 +8,12 @@ const ButtonWithIcon = ({
   type = "",
   onClick,
   id = "",
-  idSelected = "",
+  idSelected = null,
   nameIcon = "ghost",
   sizeIcon = "md",
 }) => {
   return (
-    <div className={`buttonWidthIcon ${type}`} onClick={onClick}>
+    <div className={`buttonWidthIcon ${type} ${id===idSelected && 'active'}`} onClick={onClick}>
       <i className={`icon bx bxs-${nameIcon} bx-${sizeIcon}`}></i>
       <p>{children}</p>
     </div>
