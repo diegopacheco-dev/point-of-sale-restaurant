@@ -1,3 +1,4 @@
+
 .buttonWidthIcon {
   height: 100%;
   width: 100%;
@@ -13,33 +14,47 @@
 /* ===== Button Categoria ===== */
 .buttonWidthIcon.categoria {
   background-color: white;
-  border: solid 3px var(--color-secondary);
+  border: solid 2px var(--color-secondary);
   color: var(--color-text-brown);
-  font-size: 1.2em;
-  background-color: red;
+  font-size: 400;
 }
+
+.buttonWidthIcon.categoria .icon {
+  /* color: var(--color-text-ligth); */
+  color: var(--color-primary-light);
+}
+
 .buttonWidthIcon.categoria.active {
   font-weight: 500;
   background-color: var(--color-secondary);
   border: solid 2px var(--color-primary-light);
 }
+
+.buttonWidthIcon.categoria.active .icon {
+  color: var(--color-text-brown);
+}
+
 .buttonWidthIcon.categoria:hover {
   font-weight: 500;
   background-color: var(--color-secondary);
   border: solid 2px var(--color-primary-light);
 }
 
+.buttonWidthIcon.categoria:hover .icon {
+  color: var(--color-text-brown);
+}
+
 /* ===== Button Menu ===== */
 
 .buttonWidthIcon.menu {
   color: var(--color-text-ligth);
-  background-color: brown;
 }
 .buttonWidthIcon.menu.active {
   background-color: var(--color-primary);
-  color: var(--color-text-ligth);
+  color: var(--white);
+
 }
 .buttonWidthIcon.menu:hover {
   background-color: var(--color-primary);
-  color: var(--color-text-ligth);
+  color: var(--white);
 }

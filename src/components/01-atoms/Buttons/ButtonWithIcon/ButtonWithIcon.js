@@ -1,23 +1,20 @@
 import React from "react";
-import './styles.css'
-import 'boxicons'
-import PropTypes from 'prop-types'
+import "./styles.css";
+import "boxicons";
+import PropTypes from "prop-types";
 
 const ButtonWithIcon = ({
   children = "Button",
-  type="",
+  type = "",
   onClick,
-  id="",
-  idSelected="",
-  nameIcon="ghost",
-  sizeIcon="md",
+  id = "",
+  idSelected = "",
+  nameIcon = "ghost",
+  sizeIcon = "md",
 }) => {
   return (
-    <div
-    className={`buttonWidthIcon ${type}`}
-    onClick={onClick}
-    >
-      <box-icon name={nameIcon} size={sizeIcon}></box-icon>
+    <div className={`buttonWidthIcon ${type}`} onClick={onClick}>
+      <i className={`icon bx bxs-${nameIcon} bx-${sizeIcon}`}></i>
       <p>{children}</p>
     </div>
   );
@@ -32,5 +29,5 @@ ButtonWithIcon.propTypes = {
   id: PropTypes.string,
   idSelected: PropTypes.string,
   nameIcon: PropTypes.string,
-  sizeIcon: PropTypes.oneOf(['sm', 'md', 'lg'])
-}
+  sizeIcon: PropTypes.oneOf(["sm", "md", "lg"]),
+};
