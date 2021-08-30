@@ -1,9 +1,10 @@
 import React from "react";
 import './styles.css'
 import 'boxicons'
+import PropTypes from 'prop-types'
 
 const ButtonWithIcon = ({
-  name = "Button",
+  children = "Button",
   type="",
   onClick,
   id="",
@@ -13,13 +14,23 @@ const ButtonWithIcon = ({
 }) => {
   return (
     <div
-    className={`buttonWidthIcon ${type.length > 0 && type}`}
+    className={`buttonWidthIcon ${type}`}
     onClick={onClick}
     >
       <box-icon name={nameIcon} size={sizeIcon}></box-icon>
-      <p>{name}</p>
+      <p>{children}</p>
     </div>
   );
 };
 
 export default ButtonWithIcon;
+
+ButtonWithIcon.propTypes = {
+  children: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  id: PropTypes.string,
+  idSelected: PropTypes.string,
+  nameIcon: PropTypes.string,
+  sizeIcon: PropTypes.oneOf(['sm', 'md', 'lg'])
+}

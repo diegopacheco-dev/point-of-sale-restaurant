@@ -16,6 +16,7 @@
   border: solid 3px var(--color-secondary);
   color: var(--color-text-brown);
   font-size: 1.2em;
+  background-color: red;
 }
 .buttonWidthIcon.categoria.active {
   font-weight: 500;
@@ -32,6 +33,7 @@
 
 .buttonWidthIcon.menu {
   color: var(--color-text-ligth);
+  background-color: brown;
 }
 .buttonWidthIcon.menu.active {
   background-color: var(--color-primary);
