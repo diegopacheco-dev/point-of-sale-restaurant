@@ -1,0 +1,18 @@
+.heading {
+    color: var(--color-gray-500);
+    font-weight: var(--font-weight-medium);
+}
+
+.heading.xs {
+        font-size: var(--font-size-lg);
+}
+.heading.sm {
+    font-size: var(--font-size-xl);
+}
+.heading.base {
+    font-size: var(--font-size-2xl);
+}
+.heading.lg {
+    font-size: var(--font-size-3xl);
+    color: var(--color-gray-600);
+}
