@@ -1,18 +1,24 @@
 .heading {
-    color: var(--color-gray-500);
     font-weight: var(--font-weight-medium);
 }
 
 .heading.xs {
-        font-size: var(--font-size-lg);
+    color: var(--color-gray-600);
+        font-size: var(--font-size-md);
 }
 .heading.sm {
     font-size: var(--font-size-xl);
+    color: var(--color-gray-700);
 }
-.heading.base {
+.heading.md {
     font-size: var(--font-size-2xl);
+    color: var(--color-gray-800);
 }
 .heading.lg {
     font-size: var(--font-size-3xl);
-    color: var(--color-gray-600);
+    color: var(--color-gray-800);
+}
+
+.heading.light {
+    color: var(--color-gray-400);
 }

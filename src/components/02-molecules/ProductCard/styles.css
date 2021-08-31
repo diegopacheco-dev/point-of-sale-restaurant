@@ -1,0 +1,25 @@
+.product-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-md);
+
+    width: 15em;
+    height: 22em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card__img {
+    height: 50%;
+}
+
+.product-card__info {
+    height: 50%;
+    padding: 0.7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
