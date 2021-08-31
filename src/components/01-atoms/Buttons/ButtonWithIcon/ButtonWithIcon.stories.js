@@ -12,7 +12,6 @@ export const Categoria = () => (
     type="categoria"
     onClick={() => alert("hola")}
     id=""
-    idSelected=""
     nameIcon="ghost"
     sizeIcon="md"
   >

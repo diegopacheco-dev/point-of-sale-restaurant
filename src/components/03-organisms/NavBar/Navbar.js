@@ -12,8 +12,9 @@ const Navbar = () => {
         name="Salir"
         onClick={() => alert("SALIR")}
         nameIcon="log-out"
-        sizeIcon="md"
-      />
+        type="menu"
+        sizeIcon="sm"
+      >Salir</ButtonWithIcon>
     </div>
   );
 };
