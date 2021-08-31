@@ -1,0 +1,12 @@
+.button-icon {
+    display: inline-block;
+    transition: all 0.1s;
+}
+
+.button-icon.primary {
+    color: var(--color-text-brown);
+}
+.button-icon.primary:hover {
+    filter: brightness(1.1);
+    transform: scale(1.09);
+}
