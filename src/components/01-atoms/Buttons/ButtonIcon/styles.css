@@ -1,6 +1,7 @@
 .button-icon {
     display: inline-block;
     transition: all 0.1s;
+    cursor: pointer;
 }
 
 .button-icon.primary {

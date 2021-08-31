@@ -1,4 +1,5 @@
 import React from 'react'
+import ButtonIcon from '../../01-atoms/Buttons/ButtonIcon/ButtonIcon'
 import List from '../../02-molecules/List/List'
 import './styles.css'
 
@@ -7,7 +8,7 @@ const SearchAndAddCustomer = () => {
         <div className={`search-and-add-customer`}>
             <i className={`icon bx bx-search bx-sm`}></i>
             <input type="text" placeholder="Buscar cliente"/>
-            <i className={`icon bx bx-plus-circle bx-md`}></i>
+            <ButtonIcon nameIcon="plus-circle" action={() => alert("hola mundo")}/>
             <List />
         </div>
     )
