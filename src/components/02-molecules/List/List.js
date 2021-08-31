@@ -3,6 +3,13 @@ import PropTypes from "prop-types";
 import "./styles.css";
 
 const List = ({ clientes = [], action }) => {
+  clientes = [
+    { name: "diego" },
+    { name: "erick" },
+    { name: "loan" },
+    { name: "mateo" },
+  ];
+
   return clientes.length > 0 ? (
     <ul class="list-container">
       {clientes.map((cliente, id) => (
@@ -18,5 +25,5 @@ export default List;
 
 List.propTypes = {
   clientes: PropTypes.array.isRequired,
-  action: PropTypes.func.isRequired
+  action: PropTypes.func.isRequired,
 };
