@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Icon = ({name, color="", size="md"}) => {
     return (
-            <i class={`icon-atom bx bx-${name} ${color} ${size}`}></i>
+            <i className={`icon-atom bx bx-${name} ${color} ${size}`}></i>
     )
 }
 

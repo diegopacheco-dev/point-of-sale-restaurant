@@ -14,7 +14,7 @@
 /* ===== Button Categoria ===== */
 .buttonWidthIcon.categoria {
   background-color: white;
-  border: solid 2px var(--color-secondary);
+  border: solid 3px var(--color-secondary);
   color: var(--color-text-brown);
   font-size: 400;
 }
@@ -27,7 +27,7 @@
 .buttonWidthIcon.categoria.active {
   font-weight: 500;
   background-color: var(--color-secondary);
-  border: solid 2px var(--color-primary-light);
+  border: solid 3px var(--color-primary-light);
 }
 
 .buttonWidthIcon.categoria.active .icon {
@@ -37,7 +37,7 @@
 .buttonWidthIcon.categoria:hover {
   font-weight: 500;
   background-color: var(--color-secondary);
-  border: solid 2px var(--color-primary-light);
+  border: solid 3px var(--color-primary-light);
 }
 
 .buttonWidthIcon.categoria:hover .icon {
