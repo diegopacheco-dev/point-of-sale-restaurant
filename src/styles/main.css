@@ -1,81 +1,114 @@
-@import url('./colors.css');
-@import url('./generales.css');
-@import url('https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css');
+@import url("./colors.css");
+@import url("./generales.css");
+@import url("https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css");
 
 :root {
-    /* ===== BORDER RADIUS ===== */
-    --border-radius-sm: 0.125rem;
-    --border-radius-md: 0.375rem;
-    --border-radius-lg: 0.5rem;
-    --border-radius-xl: 0.75rem;
-    --border-radius-2xl: 1rem;
-    --border-radius-3xl: 1.5rem;
-    --border-radius-full: 9999px;
+  /* ===== BORDER RADIUS ===== */
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 0.75rem;
+  --border-radius-2xl: 1rem;
+  --border-radius-3xl: 1.5rem;
+  --border-radius-full: 9999px;
 
-    /* ===== FONT SIZE ===== */
-      --font-size-xs: 0.75rem ;
-      --font-size-sm: 0.875rem ;
-      --font-size-base: 1rem;
-      --font-size-lg: 1.125rem ;
-      --font-size-xl: 1.25rem ;
-      --font-size-2xl: 1.5rem;
-      --font-size-3xl: 1.875rem;
-      --font-size-4xl: 2.25rem;
-      --font-size-5xl: 3rem;
-      --font-size-6xl: 3.75rem;
-      --font-size-7xl: 4.5rem;
-      --font-size-8xl: 6rem;
-      --font-size-9xl: 8rem;
+  /* ===== FONT SIZE ===== */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-8xl: 6rem;
+  --font-size-9xl: 8rem;
 
-    /* ===== LINE HEIGHT ===== */
-    --line-height-xs: 1rem;
-    --line-height-sm: 1.25rem;
-    --line-height-lg: 1.75rem;
-    --line-height-xl: 1.75rem;
+  /* ===== LINE HEIGHT ===== */
+  --line-height-xs: 1rem;
+  --line-height-sm: 1.25rem;
+  --line-height-lg: 1.75rem;
+  --line-height-xl: 1.75rem;
 
-    /* ===== FONT WEIGHT ===== */
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-bold: 700;
+  /* ===== FONT WEIGHT ===== */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 
-    /* ===== COLORS ===== */
-    /* GRAY */
-    --color-gray-50: #fafafa;
-    --color-gray-100: #f4f4f5;
-    --color-gray-200: #e4e4e7;
-    --color-gray-300: #d4d4d8;
-    --color-gray-400: #a1a1aa;
-    --color-gray-500: #71717a;
-    --color-gray-600: #52525b;
-    --color-gray-700: #3f3f46;
-    --color-gray-800: #27272a;
-    --color-gray-900: #18181b;
-      
+  /* ===== COLORS ===== */
+  /* GRAY */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f4f4f5;
+  --color-gray-200: #e4e4e7;
+  --color-gray-300: #d4d4d8;
+  --color-gray-400: #a1a1aa;
+  --color-gray-500: #71717a;
+  --color-gray-600: #52525b;
+  --color-gray-700: #3f3f46;
+  --color-gray-800: #27272a;
+  --color-gray-900: #18181b;
 
-    /* ===== SPACING ===== */
-    --spacing-1: 0.125rem;
-    --spacing-2: 0.25rem;
-    --spacing-3: 0.375rem;
-    --spacing-4: 0.5rem;
-    --spacing-5: 0.625rem;
-    --spacing-6: 0.75rem;
-    --spacing-7: 0.875rem;
-    --spacing-8: 1rem;
-    --spacing-9: 1.25rem;
-    --spacing-10: 1.5rem;
-    --spacing-11: 1.75rem;
-    --spacing-12: 2rem;
-    --spacing-13: 2.25rem;
-    --spacing-14: 2.5rem;
+  /* RED */
+    --color-red-50: #fef2f2;
+    --color-red-100: #fee2e2;
+    --color-red-200: #fecaca;
+    --color-red-300: #fca5a5;
+    --color-red-400: #f87171;
+    --color-red-500: #ef4444;
+    --color-red-600: #dc2626;
+    --color-red-700: #b91c1c;
+    --color-red-800: #991b1b;
+    --color-red-900: #7f1d1d;
 
+
+  /* GREEN */
+    --color-green-50: #f0fdf4;
+    --color-green-100: #dcfce7;
+    --color-green-200: #bbf7d0;
+    --color-green-300: #86efac;
+    --color-green-400: #4ade80;
+    --color-green-500: #22c55e;
+    --color-green-600: #16a34a;
+    --color-green-700: #15803d;
+    --color-green-800: #166534;
+    --color-green-900: #14532d;
+
+  
+
+
+
+
+
+  /* ===== SPACING ===== */
+  --spacing-1: 0.125rem;
+  --spacing-2: 0.25rem;
+  --spacing-3: 0.375rem;
+  --spacing-4: 0.5rem;
+  --spacing-5: 0.625rem;
+  --spacing-6: 0.75rem;
+  --spacing-7: 0.875rem;
+  --spacing-8: 1rem;
+  --spacing-9: 1.25rem;
+  --spacing-10: 1.5rem;
+  --spacing-11: 1.75rem;
+  --spacing-12: 2rem;
+  --spacing-13: 2.25rem;
+  --spacing-14: 2.5rem;
 
   /* ===== BOX SHADOW ===== */
-      --box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --box-shadow-DEFAULT: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-      --box-shadow-md: 0 3px 10px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --box-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      --box-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --box-shadow-DEFAULT: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --box-shadow-md: 0 3px 10px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --box-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --box-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 }

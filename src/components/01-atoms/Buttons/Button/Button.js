@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const Button = ({children, size="md", type="primary", action}) => {
     return (
     <button 
-    onClick={() => action()}
+    // onClick={() => action()}
     className={`button ${size} ${type}`}>
         {children}
     </button>

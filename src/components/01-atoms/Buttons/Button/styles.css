@@ -31,6 +31,12 @@
 .button.primary:hover {
     filter: brightness(1.15);
 }
+.button.primary:active {
+  background-color: var(--white);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
 
 .button.secondary {
     background-color: var(--white);

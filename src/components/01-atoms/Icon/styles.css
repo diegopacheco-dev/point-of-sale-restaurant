@@ -1,0 +1,25 @@
+.icon-atom {
+  background-color: var(--color-primary);
+  color: var(--white);
+  border-radius: var(--border-radius-lg);
+}
+
+.icon-atom.green {
+  background-color: var(--color-green-400);
+}
+
+.icon-atom.red {
+  background-color: var(--color-red-400);
+}
+
+.icon-atom.sm {
+  font-size: var(--font-size-xl);
+}
+
+.icon-atom.md {
+  font-size: var(--font-size-3xl);
+}
+
+.icon-atom.lg {
+  font-size: var(--font-size-4xl);
+}
