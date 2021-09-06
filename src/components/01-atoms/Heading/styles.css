@@ -8,11 +8,10 @@
 }
 .heading.sm {
     font-size: var(--font-size-xl);
-    color: var(--color-gray-700);
 }
 .heading.md {
     font-size: var(--font-size-2xl);
-    color: var(--color-gray-800);
+    color: var(--color-gray-700);
 }
 .heading.lg {
     font-size: var(--font-size-3xl);
