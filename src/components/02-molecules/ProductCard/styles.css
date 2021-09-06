@@ -3,9 +3,6 @@
     border-radius: var(--border-radius-xl);
     overflow: hidden;
     box-shadow: var(--box-shadow-md);
-    
-    width: 15em;
-    height: 22em;
 
     display: flex;
     flex-direction: column;
