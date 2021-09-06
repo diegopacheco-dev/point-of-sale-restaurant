@@ -1,5 +1,4 @@
 .button-icon {
-    display: inline-block;
     transition: all 0.1s;
     cursor: pointer;
 }
@@ -10,5 +9,14 @@
 
 .button-icon.primary:hover {
     filter: brightness(1.1);
-    transform: scale(1.09);
+    transform: scale(1.1);
 }
+
+.button-icon.secondary {
+    color: var(--color-text-ligth);
+}
+
+.button-icon.secondary:hover {
+    color: var(--color-gray);
+}
+

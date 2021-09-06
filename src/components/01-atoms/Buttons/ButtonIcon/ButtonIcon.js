@@ -4,11 +4,9 @@ import './styles.css'
 
 const ButtonIcon = ({nameIcon="", type="primary", sizeIcon="md", action}) => {
     return (
-        <div className={`button-icon ${type}`}
-        onClick={() => action()}
-        >
-            <i class={`icon bx bx-${nameIcon} bx-${sizeIcon}`}></i>
-        </div>
+            <i
+            onClick={() => action()}
+            className={`button-icon ${type} icon bx bx-${nameIcon} bx-${sizeIcon}`}></i>
     )
 }
 

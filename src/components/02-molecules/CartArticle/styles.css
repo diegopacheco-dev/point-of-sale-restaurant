@@ -1,0 +1,25 @@
+.cart-article {
+    display: flex;
+    width: 20rem;
+}
+
+.cart-article__img {
+    align-self: center;
+    width: 4em;
+    height: 4em;
+    border-radius: var(--border-radius-2xl);
+    overflow: hidden;
+}
+
+.cart-article__info {
+    flex: 1;
+    margin-left: 0.5em;
+}
+
+.cart-article__info div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+}
+
