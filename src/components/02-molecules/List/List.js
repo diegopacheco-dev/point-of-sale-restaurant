@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import "./styles.css";
 
 const List = ({ clientes = [], action }) => {
-  clientes = [
-    { name: "diego" },
-    { name: "erick" },
-    { name: "loan" },
-    { name: "mateo" },
-  ];
+  // clientes = [
+  //   { name: "diego" },
+  //   { name: "erick" },
+  //   { name: "loan" },
+  //   { name: "mateo" },
+  // ];
 
   return clientes.length > 0 ? (
     <ul class="list-container">
