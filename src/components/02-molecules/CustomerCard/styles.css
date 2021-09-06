@@ -1,0 +1,16 @@
+.customer-card {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 18em;
+  padding: 0.5em;
+  border-radius: var(--border-radius-full);
+  box-shadow: var(--box-shadow-md);
+}
+
+.customer-card div:first-child {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}

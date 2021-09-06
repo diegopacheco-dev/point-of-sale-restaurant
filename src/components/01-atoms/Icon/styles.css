@@ -2,6 +2,7 @@
   background-color: var(--color-primary);
   color: var(--white);
   border-radius: var(--border-radius-lg);
+  padding: 0.2rem;
 }
 
 .icon-atom.green {
@@ -22,4 +23,8 @@
 
 .icon-atom.lg {
   font-size: var(--font-size-4xl);
+}
+
+.icon-atom.rounded {
+  border-radius: 50%;
 }

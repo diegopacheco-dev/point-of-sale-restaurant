@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import Img from "../../01-atoms/Img/Img";
 import Heading from "../../01-atoms/Heading/Heading";
 import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
+import EditQuantity from "../EditQuantity/EditQuantity";
 
-const CartArticle = () => {
+const CartArticle = ({name="nombre del producto", price=27}) => {
   return (
     <div className="cart-article">
 
@@ -15,15 +16,13 @@ const CartArticle = () => {
 
       <div className="cart-article__info">
         <div>
-          <Heading size="xs">Frapuchino frapuchino</Heading>
+          <Heading size="xs">{name}</Heading>
           <ButtonIcon nameIcon="x" action="" sizeIcon="sm" action={() => alert("hola mundo")}/>
         </div>
 
         <div>
-          <ButtonIcon nameIcon="chevron-down"/>
-          <Heading size="">x2</Heading>
-          <ButtonIcon nameIcon="chevron-up"/>
-          <Heading size="" color="light">S/10</Heading>
+          <EditQuantity />
+          <Heading size="" color="light">S/{price}</Heading>
         </div>
       </div>
 
@@ -32,3 +31,8 @@ const CartArticle = () => {
 };
 
 export default CartArticle;
+
+CartArticle.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired
+}
