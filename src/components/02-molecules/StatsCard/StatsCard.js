@@ -10,7 +10,7 @@ const StatsCard = ({number="2021", title="Stats", iconName="bar-chart-square", i
         <div className="stats-card">
             <div className="stats-card__info">
                 <Heading>{number}</Heading>
-                <Heading size="xs" color="light">{title}</Heading>
+                <Heading size="xxs" color="light">{title}</Heading>
             </div>
 
             <div>
