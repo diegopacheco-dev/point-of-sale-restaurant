@@ -3,6 +3,7 @@ import './styles.css'
 import Button from '../../01-atoms/Buttons/Button/Button'
 import Heading from '../../01-atoms/Heading/Heading'
 import ButtonWithIcon from '../../01-atoms/Buttons/ButtonWithIcon/ButtonWithIcon'
+import ListCartItems from '../ListCartItems/ListCartItems'
 
 
 const OrderConfirmationBox = () => {
@@ -13,7 +14,7 @@ const OrderConfirmationBox = () => {
             </div>
 
             <div className="order-confirmation-box__body">
-                <p>Lista de articulos</p>
+                <ListCartItems />
             </div>
 
             <div className="order-confirmation-box__footer">
