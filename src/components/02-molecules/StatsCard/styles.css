@@ -1,0 +1,16 @@
+.stats-card {
+  padding: 0.7em;
+  display: flex;
+  gap: 1rem;
+  border-radius: var(--border-radius-2xl);
+  border: solid 3px var(--color-secondary);
+  background-color: white;
+
+}
+
+.stats-card__info {
+    padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
