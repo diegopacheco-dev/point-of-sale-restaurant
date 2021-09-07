@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const ButtonWithIcon = ({
   children = "Button",
-  type = "",
+  type = "categoria",
   onClick,
   id = "",
   idSelected = null,
@@ -24,7 +24,7 @@ export default ButtonWithIcon;
 
 ButtonWithIcon.propTypes = {
   children: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['categoria', 'menu']).isRequired,
   onClick: PropTypes.func,
   id: PropTypes.string,
   idSelected: PropTypes.string,

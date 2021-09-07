@@ -8,6 +8,7 @@
 }
 .heading.sm {
     font-size: var(--font-size-xl);
+    color: var(--color-gray-700);
 }
 .heading.md {
     font-size: var(--font-size-2xl);
@@ -20,4 +21,8 @@
 
 .heading.light {
     color: var(--color-gray-400);
+}
+
+.heading.center {
+    text-align: center;
 }

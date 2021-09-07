@@ -1,0 +1,86 @@
+.order-confirmation-box {
+  background-color: white;
+  box-shadow: var(--box-shadow-md);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  padding: 1rem;
+}
+
+.order-confirmation-box__header {
+  height: 8%;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: var(--border-bottom-1);
+}
+
+.order-confirmation-box__body {
+  height: 30%;
+}
+
+.order-confirmation-box__footer {
+  height: 62%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: var(--border-1);
+  padding-top: 0.5rem;
+}
+
+.order-confirmation-box__footer .status-order-buttons {
+  display: flex;
+  justify-content: flex-start;
+  width: 40%;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.order-confirmation-box__footer .order-total {
+  display: flex;
+  justify-content: space-between;
+  border-top: var(--border-1);
+  padding: 0.5rem 0;
+}
+
+.order-confirmation-box__footer .pay-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 0.5rem;
+}
+
+.order-confirmation-box__footer .pay-buttons .pay-fraction {
+  height: 100%;
+  width: 100%;
+  padding: 0.5em;
+  border-radius: var(--border-radius-2xl);
+  cursor: pointer;
+
+  background-color: white;
+  border: solid 3px var(--color-secondary);
+  color: var(--color-text-brown);
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.order-confirmation-box__footer .pay-buttons .pay-fraction.active {
+  background-color: var(--color-secondary);
+  border: solid 3px var(--color-primary-light);
+}
+
+.order-confirmation-box__footer .pay-buttons .pay-fraction:hover {
+  background-color: var(--color-secondary);
+  border: solid 3px var(--color-primary-light);
+}
+
+.order-confirmation-box__footer .confirmation-buttons {
+  display: flex;
+  gap: 1rem;
+  border-top: var(--border-1);
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
