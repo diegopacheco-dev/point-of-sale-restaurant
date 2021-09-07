@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../../01-atoms/Buttons/Button/Button";
 import Heading from "../../01-atoms/Heading/Heading";
 import CartArticle from "../../02-molecules/CartArticle/CartArticle";
+import ListCartItems from "../ListCartItems/ListCartItems";
 import SearchAndAddCustomer from "../SearchAndAddCustomer/SearchAndAddCustomer";
 import "./styles.css";
 
@@ -20,21 +21,7 @@ const ShoppingCart = ({objectShopingCart, action}) => {
           <Heading>Precio</Heading>
         </div>
         <div className="shopping-cart__body__container">
-            
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-                <CartArticle />
-            
+            <ListCartItems />     
         </div>
       </div>
 

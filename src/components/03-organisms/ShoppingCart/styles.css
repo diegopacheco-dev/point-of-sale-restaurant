@@ -29,7 +29,6 @@
 
 
 .shopping-cart__body__container {
-    padding: 1rem 1rem 2rem 0;
     overflow-y: auto;
     height: calc(100% - 2.2rem);
     display: flex;
