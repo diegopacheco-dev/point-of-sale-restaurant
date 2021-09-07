@@ -1,0 +1,9 @@
+.list-cart-items {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 20rem;
+    overflow-y: auto;
+    padding-right: 0.8rem;
+}
