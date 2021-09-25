@@ -5,14 +5,14 @@ import MenuBar from "../../02-molecules/MenuBar/MenuBar";
 import "./styles.css";
 import logoRestaurant from '../../../assets/img/logo-restaurant.jpg'
 
-const SideBar = () => {
+const SideBar = ({closeSidebar}) => {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
         <Img src={logoRestaurant} alt="" />
       </div>
       <div className="sidebar__body">
-        <MenuBar />
+        <MenuBar closeSidebar={closeSidebar}/>
         <ButtonWithIcon
           name="Salir"
           onClick={() => alert("SALIR")}

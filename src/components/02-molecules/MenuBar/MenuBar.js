@@ -1,43 +1,66 @@
 import React from "react";
+import { useHistory, useLocation } from "react-router";
 import ButtonWithIcon from "../../01-atoms/Buttons/ButtonWithIcon/ButtonWithIcon";
-import './styles.css'
+import "./styles.css";
 
-const MenuBar = () => {
+const MenuBar = ({ closeSidebar }) => {
+  const location = useLocation();
+  const history = useHistory();
 
   return (
     <div className="menubar">
       <ButtonWithIcon
         type="menu"
-        onClick={""}
+        onClick={() => {
+          location.pathname !== '/' && history.push("/");
+          closeSidebar();
+        }}
         id="/"
-        idSelected={"/"}
+        idSelected={location.pathname}
         nameIcon="dish"
         sizeIcon="md"
-      >Vender</ButtonWithIcon>
+      >
+        Vender
+      </ButtonWithIcon>
       <ButtonWithIcon
         type="menu"
-        onClick={""}
-        idSelected={""}
+        onClick={() => {
+          location.pathname !== '/pedidos' && history.push("/pedidos");
+          closeSidebar();
+        }}
+        idSelected={location.pathname}
         id="/pedidos"
         nameIcon="time-five"
         sizeIcon="md"
-      >Pedidos</ButtonWithIcon>
+      >
+        Pedidos
+      </ButtonWithIcon>
       <ButtonWithIcon
         type="menu"
-        onClick={""}
+        onClick={() => {
+          location.pathname !== '/clientes' && history.push("/clientes");
+          closeSidebar();
+        }}
         id="/clientes"
-        idSelected={""}
+        idSelected={location.pathname}
         nameIcon="group"
         sizeIcon="md"
-      >Clientes</ButtonWithIcon>
+      >
+        Clientes
+      </ButtonWithIcon>
       <ButtonWithIcon
         type="menu"
-        onClick={""}
+        onClick={() => {
+          location.pathname !== '/administrar' && history.push("/administrar");
+          closeSidebar();
+        }}
         id="/administrar"
-        idSelected={""}
+        idSelected={location.pathname}
         nameIcon="wrench"
         sizeIcon="md"
-      >Administrar</ButtonWithIcon>
+      >
+        Administrar
+      </ButtonWithIcon>
     </div>
   );
 };

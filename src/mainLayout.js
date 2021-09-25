@@ -6,6 +6,8 @@ import "./styles/mainLayout.css";
 const MainLayout = ({ children }) => {
   const [showSideBar, setShowSideBar] = useState(false);
 
+  const closeSidebar = () => setShowSideBar(false);
+
   return (
     <div className="main-layout">
       <div className="main-layout__btn-showSidebar">
@@ -17,13 +19,10 @@ const MainLayout = ({ children }) => {
       </div>
 
       <div className={`main-layout__sidebar ${showSideBar && "show"}`}>
-        <SideBar />
-        <button></button>
+        <SideBar closeSidebar={closeSidebar}/>
       </div>
       <div
-        onClick={() =>
-          showSideBar ? setShowSideBar((prevState) => !prevState) : null
-        }
+        onClick={showSideBar ? () => setShowSideBar((prevState) => !prevState) : null}
         className="main-layout__container"
       >
         {children}
