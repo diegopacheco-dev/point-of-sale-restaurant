@@ -1,10 +1,11 @@
 import React from "react";
 import ButtonWithIcon from "../../01-atoms/Buttons/ButtonWithIcon/ButtonWithIcon";
+import './styles.css'
 
 const MenuBar = () => {
 
   return (
-    <div>
+    <div className="menubar">
       <ButtonWithIcon
         type="menu"
         onClick={""}

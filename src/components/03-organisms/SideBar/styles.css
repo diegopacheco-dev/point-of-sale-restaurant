@@ -1,0 +1,19 @@
+.sidebar {
+  background-color: var(--white);
+  padding: 1rem;
+  height: 100%;
+  box-shadow: var(--box-shadow-xl);
+}
+
+.sidebar__header {
+  height: 20%;
+  padding: 1rem;
+}
+
+.sidebar__body {
+  height: 80%;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

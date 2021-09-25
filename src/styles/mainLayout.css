@@ -1,0 +1,26 @@
+.main-layout {
+  position: relative;
+  height: 100vh;
+}
+
+.main-layout__sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 9rem;
+  left: -100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-layout__sidebar.show {
+  left: 0%;
+}
+
+.main-layout__btn-showSidebar {
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+}
+
+.main-layout__container {
+  min-height: 100vh;
+}

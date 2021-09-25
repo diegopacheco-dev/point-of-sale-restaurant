@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css'
 import Heading from '../../01-atoms/Heading/Heading'
-import Icon from '../../01-atoms/Icon/Icon'
+import IconElement from '../../01-atoms/IconElement/IconElement'
 import PropTypes from 'prop-types'
 
 
@@ -14,7 +14,7 @@ const StatsCard = ({number="2021", title="Stats", iconName="bar-chart-square", i
             </div>
 
             <div>
-                <Icon name={iconName} color={iconColor}/>
+                <IconElement name={iconName} color={iconColor}/>
             </div>
         </div>
     )

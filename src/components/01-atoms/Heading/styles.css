@@ -1,5 +1,6 @@
 .heading {
     font-weight: var(--font-weight-medium);
+    margin: 0 !important;
 }
 
 .heading.xxs {

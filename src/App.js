@@ -1,21 +1,24 @@
 import React from "react";
-import ButtonWithIcon from "./components/01-atoms/Buttons/ButtonWithIcon/ButtonWithIcon";
+import { HashRouter, Switch, Route } from "react-router-dom";
+import LoginPage from "./components/05-pages/Login/LoginPage";
+import AdminRouter from "./modules/Admin/AdminRouter";
+import Private from './Private'
 
 const App = () => {
+
+
   return (
-    <div>
-      <ButtonWithIcon
-        children="Button"
-        type="menu"
-        onClick={() => alert("mundo")}
-        id=""
-        idSelected=""
-        nameIcon="ghost"
-        sizeIcon="md"
-      >
-        Menu
-      </ButtonWithIcon>
-    </div>
+
+    <HashRouter>
+
+        <Switch>
+            <Route path="/login" component={LoginPage} />
+            <Private path="/" component={AdminRouter} />
+
+        </Switch>
+
+    </HashRouter>
+
   );
 };
 
