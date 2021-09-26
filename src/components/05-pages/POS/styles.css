@@ -1,0 +1,50 @@
+.pos-template {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.pos-template__main-container {
+  height: 100%;
+  background-color: red;
+  padding-top: 2.5rem;
+}
+
+.btn-showShoppingCart {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.pos-template__shoppingCart {
+  height: 100vh;
+  background-color: purple;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: all 0.3s ease-in-out;
+  z-index: 99;
+}
+
+.pos-template__shoppingCart.show {
+  right: 0;
+}
+
+.pos-template .btn-shoppingCart {
+  background-color: yellow;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+/* ===== POS TEMPLATE HEADER ===== */
+
+.pos-template__main-container .header {
+  padding: 1rem;
+}
+
+.pos-template__main-container .body {
+  padding: 1rem;
+}
