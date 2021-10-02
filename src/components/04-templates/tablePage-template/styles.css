@@ -1,0 +1,24 @@
+.table-page-template {
+  background-color: red;
+  height: 100%;
+  padding-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table-page-template__col-1 {
+  flex: 100%;
+}
+
+.table-page-template__col-1 .header {
+  padding: 1rem;
+}
+
+.table-page-template__col-1 .body {
+  padding: 1rem;
+}
+
+.table-page-template__col-2 {
+  flex: 100%;
+  padding: 1rem;
+}

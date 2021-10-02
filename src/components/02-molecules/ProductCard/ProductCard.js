@@ -21,7 +21,7 @@ const ProductCard = ({photo, name, price, stock, action}) => {
         <Heading size="xs" color="light">
           {stock} disponibles
         </Heading>
-        <Button action={action}>Añadir</Button>
+        <Button action={action} size="sm">Añadir</Button>
       </div>
     </div>
   );
