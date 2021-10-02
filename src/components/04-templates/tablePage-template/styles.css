@@ -1,9 +1,8 @@
 .table-page-template {
-  background-color: red;
   height: 100%;
-  padding-top: 2.5rem;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .table-page-template__col-1 {

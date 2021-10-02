@@ -1,0 +1,11 @@
+.data-table {
+  border-radius: var(--border-radius-3xl);
+  padding: 1.5rem 1rem;
+  background-color: var(--white);
+  box-shadow: var(--box-shadow-2xl);
+}
+
+.data-table__wrapper {
+    width: 100vw;
+    overflow-x: auto;
+}
