@@ -1,7 +1,7 @@
 .main-layout {
   position: relative;
   min-height: 100vh;
-  background-color: #F9F9FB;
+  background-color: #f9f9fb;
 }
 
 .main-layout__sidebar {
@@ -29,4 +29,22 @@
   min-height: 100vh;
   display: flex;
   padding-top: 3rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .main-layout {
+    margin-left: 9rem;
+  }
+  .main-layout__sidebar {
+    left: 0;
+  }
+
+  .main-layout__btn-showSidebar {
+    display: none;
+  }
+  .main-layout__container {
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
