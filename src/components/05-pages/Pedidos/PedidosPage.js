@@ -93,9 +93,9 @@ const PedidosPage = () => {
         </div>
       </div>
       <div className="table-page-template__col-2">
-        {/* <div style={{ height: "45rem", backgroundColor: "lightgray" }}>
+        {/* "<div style={{ height: "45rem", backgroundColor: "lightgray" }}>
           <h2>Aside</h2>
-        </div> */}
+        </div>" */}
       </div>
     </div>
   );
