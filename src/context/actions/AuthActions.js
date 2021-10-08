@@ -1,5 +1,6 @@
 import { LOGIN, LOGOUT } from "../types";
 
+// esta funcion es solo un contenedor para las acciones del authstate
 export const AuthActions = (state, dispatch) => {
   const LoginAction = (user) => {
     localStorage.setItem("user", JSON.stringify({ ...user, isAuth: true }));
@@ -10,4 +11,6 @@ export const AuthActions = (state, dispatch) => {
     localStorage.removeItem("user");
     dispatch({ type: LOGOUT });
   };
+
+  return { LoginAction, LogoutAction };
 };

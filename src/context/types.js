@@ -1,5 +1,9 @@
 // AUTH
-
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const LOADING = "LOADING";
+
+// CART
+export const ADD = "ADD";
+export const DELETE = "DELETE";
+export const UPDATE = "UPDATE";
