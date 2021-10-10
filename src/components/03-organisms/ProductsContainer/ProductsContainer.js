@@ -1,157 +1,181 @@
-import React, { useState } from "react";
+import { collection, getDocs, query, where } from "@firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { db } from "../../../firebase/firebase";
 import Heading from "../../01-atoms/Heading/Heading";
 import ProductCard from "../../02-molecules/ProductCard/ProductCard";
 import "./styles.css";
 
-const ProductsContainer = ({ products = [], categoriaGlobal = "drinks" }) => {
-  const [cargando] = useState(false);
+const ProductsContainer = ({ idCategoriaSeleccionada }) => {
+  // const products = [
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  //   {
+  //     name: "Producto",
+  //     img:
+  //       "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
+  //     price: 60,
+  //     stock: 15,
+  //   },
+  // ];
+  const [products, setProducts] = useState([]);
+  const [cargando, setCargando] = useState(false);
 
-  products = [
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-    {
-      name: "Producto",
-      img:
-        "https://i.picsum.photos/id/755/200/200.jpg?hmac=fgsDUz8GLl3UPtHhHlMIabU9V8LhbOPCwYGzrrn6CyU",
-      price: 60,
-      stock: 15,
-    },
-  ];
+  useEffect(() => {
+    const getProductosByIdCategoria = async () => {
+      try {
+        setCargando(true);
+        const consulta = query(
+          collection(db, "platos"),
+          where("categoria_id", "==", idCategoriaSeleccionada)
+        );
+        const { docs } = await getDocs(consulta);
+        const data = docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProducts(data);
+        setCargando(false);
+      } catch (err) {
+        console.log("error al consultar productos: ", err);
+        setCargando(false);
+      }
+    };
+    getProductosByIdCategoria();
+  }, [idCategoriaSeleccionada]);
+
+  console.log("products : ", products);
 
   return (
     <div className="vertical-space-2">
       <Heading>Productos</Heading>
-
-      {!categoriaGlobal ? (
-        <p>Selecciona una categoría</p>
-      ) : cargando ? (
-        <p>Cargando...</p>
-      ) : (
-        <div className="products-container">
-          {products.map((product, id) => {
-            return (
-              <ProductCard
-                key={id}
-                photo={product.img}
-                name={product.name}
-                price={product.price}
-                stock={product.stock}
-                action={() => alert("añadiendo producto")}
-              />
-            );
-          })}
-        </div>
-      )}
+      {!idCategoriaSeleccionada ? <p>Selecciona una categoria</p> : null}
+      {cargando ? <p>Cargando...</p> : null}
+      <div className="products-container">
+        {idCategoriaSeleccionada && !cargando
+          ? products.map((product) => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  photo={product.imagen}
+                  name={product.nombre}
+                  price={product.precio}
+                  stock={product.stock}
+                  action={() => alert("añadiendo producto")}
+                />
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 };
