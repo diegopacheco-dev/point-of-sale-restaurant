@@ -1,13 +1,12 @@
 import React from "react";
 import Button from "../../01-atoms/Buttons/Button/Button";
 import Heading from "../../01-atoms/Heading/Heading";
-import CartArticle from "../../02-molecules/CartArticle/CartArticle";
 import ListCartItems from "../ListCartItems/ListCartItems";
 import SearchAndAddCustomer from "../SearchAndAddCustomer/SearchAndAddCustomer";
 import "./styles.css";
 
-const ShoppingCart = ({objectShopingCart, action}) => {
-    action = () => alert("confirmar carrito");
+const ShoppingCart = ({ objectShopingCart, action }) => {
+  action = () => alert("confirmar carrito");
   return (
     <div className="shopping-cart">
       <div className="shopping-cart__header">
@@ -21,7 +20,7 @@ const ShoppingCart = ({objectShopingCart, action}) => {
           <Heading>Precio</Heading>
         </div>
         <div className="shopping-cart__body__container">
-            <ListCartItems />     
+          <ListCartItems />
         </div>
       </div>
 
@@ -31,9 +30,7 @@ const ShoppingCart = ({objectShopingCart, action}) => {
           <Heading>S/ 50</Heading>
         </div>
 
-        <Button 
-        action={action}
-        >Continuar</Button>
+        <Button action={action}>Continuar</Button>
       </div>
     </div>
   );

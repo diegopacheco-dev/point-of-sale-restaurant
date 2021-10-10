@@ -6,7 +6,7 @@ import Img from "../../01-atoms/Img/Img";
 
 import PropTypes from 'prop-types'
 
-const ProductCard = ({photo, name, price, stock, action}) => {
+const ProductCard = ({photo, name="", price, stock, action}) => {
   return (
     <div className="product-card">
       <div className="product-card__img">
@@ -29,7 +29,6 @@ const ProductCard = ({photo, name, price, stock, action}) => {
 
 ProductCard.propTypes = {
     photo: PropTypes.string.isRequired,
-    photoName: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     stock: PropTypes.number.isRequired,

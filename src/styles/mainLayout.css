@@ -29,6 +29,7 @@
   min-height: 100vh;
   display: flex;
   padding-top: 3rem;
+  padding-bottom: 2rem;
 }
 
 @media screen and (min-width: 1024px) {

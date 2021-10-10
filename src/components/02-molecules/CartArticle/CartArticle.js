@@ -6,26 +6,33 @@ import Heading from "../../01-atoms/Heading/Heading";
 import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
 import EditQuantity from "../EditQuantity/EditQuantity";
 
-const CartArticle = ({name="nombre del producto", price=27}) => {
+const CartArticle = ({ name = "nombre del producto", price = 27 }) => {
   return (
     <div className="cart-article">
-
       <div className="cart-article__img">
-        <Img src="https://firebasestorage.googleapis.com/v0/b/pos-jorge-demo-portafolio.appspot.com/o/images%2Funnamed.png?alt=media&token=355e57b7-ce01-4b6a-b559-c47f02b45be6" alt="" />
+        <Img
+          src="https://firebasestorage.googleapis.com/v0/b/pos-jorge-demo-portafolio.appspot.com/o/images%2Funnamed.png?alt=media&token=355e57b7-ce01-4b6a-b559-c47f02b45be6"
+          alt=""
+        />
       </div>
 
       <div className="cart-article__info">
         <div>
           <Heading size="xs">{name}</Heading>
-          <ButtonIcon nameIcon="x" action="" sizeIcon="sm" action={() => alert("hola mundo")}/>
+          <ButtonIcon
+            nameIcon="x"
+            sizeIcon="sm"
+            action={() => alert("hola mundo")}
+          />
         </div>
 
         <div>
-          <EditQuantity />
-          <Heading size="" color="light">S/{price}</Heading>
+          <EditQuantity cantidad={15} />
+          <Heading size="sm" color="light">
+            S/{price.toString()}
+          </Heading>
         </div>
       </div>
-
     </div>
   );
 };
@@ -34,5 +41,5 @@ export default CartArticle;
 
 CartArticle.propTypes = {
   name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
-}
+  price: PropTypes.number.isRequired,
+};

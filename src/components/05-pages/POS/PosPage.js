@@ -8,6 +8,11 @@ import "./styles.css";
 
 const PosPage = (props) => {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
+  const [idCategoriaSeleccionada, setIdCategoriaSeleccionada] = useState(null);
+
+  console.log("CATEGORIA SELECCIONADA", idCategoriaSeleccionada);
+  // const seleccionarCategoria = (id) => setIdCategoriaSeleccionada(id);
+
   return (
     <div className="pos-template">
       <div className="btn-showShoppingCart">
@@ -16,11 +21,13 @@ const PosPage = (props) => {
 
       <div className="pos-template__main-container">
         <div className="header">
-          <ChooseCategory />
+          <ChooseCategory seleccionarCategoria={setIdCategoriaSeleccionada} />
         </div>
 
         <div className="body">
-          <ProductsContainer />
+          <ProductsContainer
+            idCategoriaSeleccionada={idCategoriaSeleccionada}
+          />
         </div>
       </div>
 

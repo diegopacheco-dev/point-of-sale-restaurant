@@ -11,7 +11,7 @@ const Heading = ({children, size="md", color="", align=""}) => {
 export default Heading
 
 Heading.propTypes = {
-    children: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired,
     size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg'])
 }
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Heading from "../../01-atoms/Heading/Heading";
 import ProductCard from "../../02-molecules/ProductCard/ProductCard";
-import './styles.css'
+import "./styles.css";
 
 const ProductsContainer = ({ products = [], categoriaGlobal = "drinks" }) => {
-  const [cargando, setCargando] = useState(false);
+  const [cargando] = useState(false);
 
   products = [
     {
@@ -138,9 +138,10 @@ const ProductsContainer = ({ products = [], categoriaGlobal = "drinks" }) => {
         <p>Cargando...</p>
       ) : (
         <div className="products-container">
-          {products.map((product) => {
+          {products.map((product, id) => {
             return (
               <ProductCard
+                key={id}
                 photo={product.img}
                 name={product.name}
                 price={product.price}

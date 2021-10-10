@@ -10,7 +10,7 @@ const EditQuantity = ({cantidad=0, action}) => {
   return (
     <div className="edit-quantity">
       <ButtonIcon action={() => action("add")} nameIcon="chevron-down" type="secondary" sizeIcon="sm"/>
-      <Heading size="">{cantidad}</Heading>
+      <Heading size="sm">{cantidad.toString()}</Heading>
       <ButtonIcon action={() => action("subtract")} nameIcon="chevron-up" type="secondary" sizeIcon="sm"/>
     </div>
   );
