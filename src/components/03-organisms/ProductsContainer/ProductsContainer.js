@@ -5,7 +5,7 @@ import Heading from "../../01-atoms/Heading/Heading";
 import ProductCard from "../../02-molecules/ProductCard/ProductCard";
 import "./styles.css";
 
-const ProductsContainer = ({ idCategoriaSeleccionada }) => {
+const ProductsContainer = ({ idCategoriaSeleccionada, AddItemAction }) => {
   // const products = [
   //   {
   //     name: "Producto",
@@ -170,11 +170,14 @@ const ProductsContainer = ({ idCategoriaSeleccionada }) => {
                   name={product.nombre}
                   price={product.precio}
                   stock={product.stock}
-                  action={() => alert("añadiendo producto")}
+                  action={() => AddItemAction(product)}
                 />
               );
             })
           : null}
+        {idCategoriaSeleccionada && !cargando && products.length === 0 ? (
+          <p>Sin productos en esta categoria</p>
+        ) : null}
       </div>
     </div>
   );
