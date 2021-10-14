@@ -19,12 +19,17 @@
 .pos-template__shoppingCart {
   height: 100vh;
   width: 100%;
-  max-width: 22rem;
   position: fixed;
   top: 0;
   right: -100%;
   transition: all 0.3s ease-in-out;
   z-index: 99;
+}
+
+@media screen and (min-width: 768px) {
+  .pos-template__shoppingCart {
+    max-width: 22rem;
+  }
 }
 
 .pos-template__shoppingCart.show {
