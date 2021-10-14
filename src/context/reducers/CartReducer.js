@@ -40,6 +40,13 @@ const CartReducer = (state, { type, payload }) => {
     }
   }
   if (type === DELETE) {
+    const { items } = state;
+    const itemsActualizado = items.filter((item) => item.id !== payload);
+    return {
+      ...state,
+      items: itemsActualizado,
+      monto_total: calcularMontoTotal(itemsActualizado),
+    };
   }
 };
 

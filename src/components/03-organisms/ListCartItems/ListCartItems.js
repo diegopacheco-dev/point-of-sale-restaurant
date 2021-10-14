@@ -2,22 +2,19 @@ import React from "react";
 import "./styles.css";
 import CartArticle from "../../02-molecules/CartArticle/CartArticle";
 
-const ListCartItems = (items = []) => {
+const ListCartItems = ({ listItems = [], DeleteItemAction = () => {} }) => {
   return (
     <div className="list-cart-items">
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
-      <CartArticle name="product" price={20}/>
+      {listItems.map((item) => (
+        <CartArticle
+          key={item.id}
+          // onClick={() => DeleteItemAction(item.id)}
+          deleteItemAction={DeleteItemAction}
+          name={item.nombre}
+          id={item.id}
+          price={item.precio}
+        />
+      ))}
     </div>
   );
 };

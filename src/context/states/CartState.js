@@ -4,7 +4,7 @@ import { CartActions } from "../actions/CartActions";
 import CartReducer from "../reducers/CartReducer";
 import { DELETE, UPDATE_MONTO_TOTAL } from "../types";
 
-export const ShopContext = createContext();
+export const CartContext = createContext();
 
 export const initialStateCart = {
   items: [],
@@ -13,7 +13,11 @@ export const initialStateCart = {
 
 // ===== Componente Principal =====
 const CartState = ({ children }) => {
-  const [state, dispatch] = useLocalStorageReducer("cart", CartReducer, initialStateCart)
+  const [state, dispatch] = useLocalStorageReducer(
+    "cart",
+    CartReducer,
+    initialStateCart
+  );
   // const [state, dispatch] = useReducer(
   //   CartReducer,
   //   (() => window.localStorage.getItem("cart") || initialStateCart)()
@@ -28,9 +32,9 @@ const CartState = ({ children }) => {
   console.log("Estado ", state);
 
   return (
-    <ShopContext.Provider value={cartStateProps}>
+    <CartContext.Provider value={cartStateProps}>
       {children}
-    </ShopContext.Provider>
+    </CartContext.Provider>
   );
 };
 

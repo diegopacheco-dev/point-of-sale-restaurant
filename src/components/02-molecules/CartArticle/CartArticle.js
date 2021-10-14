@@ -6,7 +6,12 @@ import Heading from "../../01-atoms/Heading/Heading";
 import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
 import EditQuantity from "../EditQuantity/EditQuantity";
 
-const CartArticle = ({ name = "nombre del producto", price = 27 }) => {
+const CartArticle = ({
+  name = "nombre del producto",
+  id = "",
+  price = 27,
+  deleteItemAction,
+}) => {
   return (
     <div className="cart-article">
       <div className="cart-article__img">
@@ -22,7 +27,7 @@ const CartArticle = ({ name = "nombre del producto", price = 27 }) => {
           <ButtonIcon
             nameIcon="x"
             sizeIcon="sm"
-            action={() => alert("hola mundo")}
+            action={() => deleteItemAction(id)}
           />
         </div>
 

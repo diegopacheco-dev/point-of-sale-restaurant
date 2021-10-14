@@ -18,8 +18,8 @@
 
 .pos-template__shoppingCart {
   height: 100vh;
-  background-color: purple;
   width: 100%;
+  max-width: 22rem;
   position: fixed;
   top: 0;
   right: -100%;

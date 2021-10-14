@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../../context/states/CartState";
 import Button from "../../01-atoms/Buttons/Button/Button";
 import Heading from "../../01-atoms/Heading/Heading";
 import ListCartItems from "../ListCartItems/ListCartItems";
 import SearchAndAddCustomer from "../SearchAndAddCustomer/SearchAndAddCustomer";
 import "./styles.css";
 
-const ShoppingCart = ({ objectShopingCart, action }) => {
-  action = () => alert("confirmar carrito");
+const ShoppingCart = () => {
+  const { monto_total, items, DeleteItemAction } = useContext(CartContext);
+
+  const action = () => alert("confirmar carrito");
   return (
     <div className="shopping-cart">
       <div className="shopping-cart__header">
@@ -20,14 +23,17 @@ const ShoppingCart = ({ objectShopingCart, action }) => {
           <Heading>Precio</Heading>
         </div>
         <div className="shopping-cart__body__container">
-          <ListCartItems />
+          <ListCartItems
+            DeleteItemAction={DeleteItemAction}
+            listItems={items}
+          />
         </div>
       </div>
 
       <div className="shopping-cart__footer">
         <div className="shopping-cart__footer__header">
           <Heading>Total</Heading>
-          <Heading>S/ 50</Heading>
+          <Heading>S/ {monto_total}</Heading>
         </div>
 
         <Button action={action}>Continuar</Button>

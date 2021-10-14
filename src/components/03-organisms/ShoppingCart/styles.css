@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    /* max-width: 20rem; */
     padding: 1rem;
 }
 

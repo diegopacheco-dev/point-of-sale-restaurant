@@ -4,13 +4,13 @@ import ButtonShowCart from "../../01-atoms/Buttons/ButtonShowCart/ButtonShowCart
 import ChooseCategory from "../../03-organisms/ChooseCategory/ChooseCategory";
 import ProductsContainer from "../../03-organisms/ProductsContainer/ProductsContainer";
 import ShoppingCart from "../../03-organisms/ShoppingCart/ShoppingCart";
-import { ShopContext } from "../../../context/states/CartState";
-import "./styles.css";
+import { CartContext } from "../../../context/states/CartState";
+import '../../04-templates/pos-template/styles.css';
 
 const PosPage = (props) => {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
   const [idCategoriaSeleccionada, setIdCategoriaSeleccionada] = useState(null);
-  const { AddItemAction } = useContext(ShopContext);
+  const { AddItemAction, items} = useContext(CartContext);
 
   console.log("CATEGORIA SELECCIONADA", idCategoriaSeleccionada);
   // const seleccionarCategoria = (id) => setIdCategoriaSeleccionada(id);
@@ -18,7 +18,10 @@ const PosPage = (props) => {
   return (
     <div className="pos-template">
       <div className="btn-showShoppingCart">
-        <ButtonShowCart action={() => setShowShoppingCart(true)} />
+        <ButtonShowCart
+          quantity={items.length}
+          action={() => setShowShoppingCart(true)}
+        />
       </div>
 
       <div className="pos-template__main-container">
