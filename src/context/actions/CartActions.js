@@ -5,8 +5,8 @@ export const CartActions = (state, dispatch) => {
     dispatch({ type: ADD, payload: objItem });
   };
 
-  const UpdateQuantityItemAction = (idItem, quantity) => {
-    dispatch({ type: UPDATE_QUANTIFY, payload: { idItem, quantity } });
+  const UpdateQuantityItemAction = (operation, idItem) => {
+    dispatch({ type: UPDATE_QUANTIFY, payload: { operation, idItem } });
   };
 
   const DeleteItemAction = (idItem) => {

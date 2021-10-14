@@ -153,8 +153,6 @@ const ProductsContainer = ({ idCategoriaSeleccionada, AddItemAction }) => {
     getProductosByIdCategoria();
   }, [idCategoriaSeleccionada]);
 
-  console.log("products : ", products);
-
   return (
     <div className="vertical-space-2">
       <Heading>Productos</Heading>

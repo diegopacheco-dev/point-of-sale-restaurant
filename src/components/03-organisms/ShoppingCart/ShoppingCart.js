@@ -7,7 +7,7 @@ import SearchAndAddCustomer from "../SearchAndAddCustomer/SearchAndAddCustomer";
 import "./styles.css";
 
 const ShoppingCart = () => {
-  const { monto_total, items, DeleteItemAction } = useContext(CartContext);
+  const { monto_total } = useContext(CartContext);
 
   const action = () => alert("confirmar carrito");
   return (
@@ -23,10 +23,7 @@ const ShoppingCart = () => {
           <Heading>Precio</Heading>
         </div>
         <div className="shopping-cart__body__container">
-          <ListCartItems
-            DeleteItemAction={DeleteItemAction}
-            listItems={items}
-          />
+          <ListCartItems />
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 // lOS REDUCER RECIBEN EL STATE Y EL OBJETO QUE LE MANDA EL DISPATCH
-import { ADD, DELETE } from "../types";
+import { ADD, DELETE, UPDATE_QUANTIFY } from "../types";
 
 const calcularMontoTotal = (items) => {
   let nuevoMonto = items.reduce((suma, item) => {
@@ -40,12 +40,31 @@ const CartReducer = (state, { type, payload }) => {
     }
   }
   if (type === DELETE) {
-    const { items } = state;
-    const itemsActualizado = items.filter((item) => item.id !== payload);
+    let { items } = state;
+    items = items.filter((item) => item.id !== payload);
     return {
       ...state,
-      items: itemsActualizado,
-      monto_total: calcularMontoTotal(itemsActualizado),
+      items: items,
+      monto_total: calcularMontoTotal(items),
+    };
+  }
+  if (type === UPDATE_QUANTIFY) {
+    let { items } = state;
+    const item = items.find((item) => item.id === payload.idItem);
+    if (payload.operation === "add") {
+      item.cantidad++;
+    } else {
+      if (item.cantidad > 1) {
+        item.cantidad--;
+      } else {
+        items = [];
+      }
+    }
+    console.log("item reducer ", item);
+    return {
+      ...state,
+      items: items,
+      monto_total: calcularMontoTotal(items),
     };
   }
 };

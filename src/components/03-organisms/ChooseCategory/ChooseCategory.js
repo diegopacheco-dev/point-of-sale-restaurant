@@ -23,8 +23,6 @@ const ChooseCategory = ({seleccionarCategoria}) => {
     getCategorias();
   }, []);
 
-  console.log(categorias);
-
   return (
     <div className="vertical-space-1">
       <Heading>Elige la categoría</Heading>

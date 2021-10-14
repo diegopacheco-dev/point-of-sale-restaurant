@@ -1,19 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./styles.css";
 import CartArticle from "../../02-molecules/CartArticle/CartArticle";
+import { CartContext } from "../../../context/states/CartState";
 
-const ListCartItems = ({ listItems = [], DeleteItemAction = () => {} }) => {
+const ListCartItems = () => {
+  const { items } = useContext(CartContext);
+
   return (
     <div className="list-cart-items">
-      {listItems.map((item) => (
-        <CartArticle
-          key={item.id}
-          // onClick={() => DeleteItemAction(item.id)}
-          deleteItemAction={DeleteItemAction}
-          name={item.nombre}
-          id={item.id}
-          price={item.precio}
-        />
+      {items.map((item) => (
+        <CartArticle key={item.id} item={item} />
       ))}
     </div>
   );

@@ -1,17 +1,29 @@
 import React from "react";
 import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
 import Heading from "../../01-atoms/Heading/Heading";
-import './styles.css';
-import PropTypes from 'prop-types';
+import "./styles.css";
+import PropTypes from "prop-types";
 
-const EditQuantity = ({cantidad=0, action}) => {
-    action = () => alert("hola mundo");
-
+const EditQuantity = ({
+  cantidad = 0,
+  idItem = "",
+  UpdateQuantityItemAction = () => {},
+}) => {
   return (
     <div className="edit-quantity">
-      <ButtonIcon action={() => action("add")} nameIcon="chevron-down" type="secondary" sizeIcon="sm"/>
+      <ButtonIcon
+        action={() => UpdateQuantityItemAction("subtract", idItem)}
+        nameIcon="chevron-down"
+        type="secondary"
+        sizeIcon="sm"
+      />
       <Heading size="sm">{cantidad.toString()}</Heading>
-      <ButtonIcon action={() => action("subtract")} nameIcon="chevron-up" type="secondary" sizeIcon="sm"/>
+      <ButtonIcon
+        action={() => UpdateQuantityItemAction("add", idItem)}
+        nameIcon="chevron-up"
+        type="secondary"
+        sizeIcon="sm"
+      />
     </div>
   );
 };
@@ -19,5 +31,5 @@ const EditQuantity = ({cantidad=0, action}) => {
 export default EditQuantity;
 
 EditQuantity.propTypes = {
-    cantidad: PropTypes.number.isRequired,
-}
+  cantidad: PropTypes.number.isRequired,
+};

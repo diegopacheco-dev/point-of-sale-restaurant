@@ -29,8 +29,6 @@ const CartState = ({ children }) => {
     ...CartActions(state, dispatch),
   };
 
-  console.log("Estado ", state);
-
   return (
     <CartContext.Provider value={cartStateProps}>
       {children}

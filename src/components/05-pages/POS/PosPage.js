@@ -5,21 +5,18 @@ import ChooseCategory from "../../03-organisms/ChooseCategory/ChooseCategory";
 import ProductsContainer from "../../03-organisms/ProductsContainer/ProductsContainer";
 import ShoppingCart from "../../03-organisms/ShoppingCart/ShoppingCart";
 import { CartContext } from "../../../context/states/CartState";
-import '../../04-templates/pos-template/styles.css';
+import "../../04-templates/pos-template/styles.css";
 
 const PosPage = (props) => {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
   const [idCategoriaSeleccionada, setIdCategoriaSeleccionada] = useState(null);
-  const { AddItemAction, items} = useContext(CartContext);
-
-  console.log("CATEGORIA SELECCIONADA", idCategoriaSeleccionada);
-  // const seleccionarCategoria = (id) => setIdCategoriaSeleccionada(id);
+  const { AddItemAction, items } = useContext(CartContext);
 
   return (
     <div className="pos-template">
       <div className="btn-showShoppingCart">
         <ButtonShowCart
-          quantity={items.length}
+          quantity={items?.length}
           action={() => setShowShoppingCart(true)}
         />
       </div>
