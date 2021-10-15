@@ -56,8 +56,6 @@ const CartReducer = (state, { type, payload }) => {
     } else {
       if (item.cantidad > 1) {
         item.cantidad--;
-      } else {
-        items = [];
       }
     }
     console.log("item reducer ", item);

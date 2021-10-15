@@ -6,11 +6,17 @@ import ProductsContainer from "../../03-organisms/ProductsContainer/ProductsCont
 import ShoppingCart from "../../03-organisms/ShoppingCart/ShoppingCart";
 import { CartContext } from "../../../context/states/CartState";
 import "../../04-templates/pos-template/styles.css";
+import OrderConfirmationBox from "../../03-organisms/OrderConfirmationBox/OrderConfirmationBox";
 
 const PosPage = (props) => {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
+  const [showOrderConfirmationBox, setShowOrderConfirmationBox] = useState(
+    false
+  );
   const [idCategoriaSeleccionada, setIdCategoriaSeleccionada] = useState(null);
   const { AddItemAction, items } = useContext(CartContext);
+
+  console.log("show confirmation box ", showOrderConfirmationBox);
 
   return (
     <div className="pos-template">
@@ -40,7 +46,13 @@ const PosPage = (props) => {
         <div className="btn-shoppingCart">
           <ButtonIcon nameIcon="x" action={() => setShowShoppingCart(false)} />
         </div>
-        <ShoppingCart />
+        {showOrderConfirmationBox ? (
+          <OrderConfirmationBox
+            onToggle={() => setShowOrderConfirmationBox(false)}
+          />
+        ) : (
+          <ShoppingCart action={() => setShowOrderConfirmationBox(true)} />
+        )}
       </div>
     </div>
   );

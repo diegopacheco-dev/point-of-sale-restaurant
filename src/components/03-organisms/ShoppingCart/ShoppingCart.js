@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../context/states/CartState";
 import Button from "../../01-atoms/Buttons/Button/Button";
 import Heading from "../../01-atoms/Heading/Heading";
@@ -7,10 +7,31 @@ import ListCartItems from "../ListCartItems/ListCartItems";
 import SearchAndAddCustomer from "../SearchAndAddCustomer/SearchAndAddCustomer";
 import "./styles.css";
 
-const ShoppingCart = () => {
-  const { monto_total, cliente, SetClientePedido } = useContext(CartContext);
+const ShoppingCart = ({ action }) => {
+  const [areaError, setAreaError] = useState(null);
+  const { monto_total, cliente, SetClientePedido, items } = useContext(
+    CartContext
+  );
 
-  const action = () => alert("confirmar carrito");
+  const handleConfirmPedido = () => {
+    setAreaError(null);
+    // validamos el carrito lleno y el cliente seleccionado
+    if (items.length === 0) {
+      setAreaError("carrito");
+      return;
+    }
+    if (!cliente) {
+      setAreaError("cliente");
+      return;
+    }
+    action();
+  };
+
+  useEffect(() => {
+    // reseteamos el areaError con cada cambio del carrito y nombre
+    setAreaError(null);
+  }, [items.length, cliente]);
+
   return (
     <div className="shopping-cart">
       <div className="shopping-cart__header">
@@ -23,7 +44,10 @@ const ShoppingCart = () => {
             cliente={cliente}
           />
         ) : (
-          <SearchAndAddCustomer SetClientePedido={SetClientePedido} />
+          <SearchAndAddCustomer
+            isAlert={areaError === "cliente" ? true : false}
+            SetClientePedido={SetClientePedido}
+          />
         )}
       </div>
 
@@ -33,6 +57,7 @@ const ShoppingCart = () => {
           <Heading>Precio</Heading>
         </div>
         <div className="shopping-cart__body__container">
+          {areaError === "carrito" ? <Heading>Carrito vacio</Heading> : null}
           <ListCartItems />
         </div>
       </div>
@@ -42,8 +67,7 @@ const ShoppingCart = () => {
           <Heading>Total</Heading>
           <Heading>S/ {monto_total}</Heading>
         </div>
-
-        <Button action={action}>Continuar</Button>
+        <Button action={handleConfirmPedido}>Continuar</Button>
       </div>
     </div>
   );

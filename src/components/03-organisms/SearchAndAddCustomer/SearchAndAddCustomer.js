@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { CartContext } from "../../../context/states/CartState";
+import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
 import List from "../../02-molecules/List/List";
 import "./styles.css";
 
-const SearchAndAddCustomer = ({SetClientePedido}) => {
+const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
   const [sugerencias, setSugerencias] = useState([]);
   const [searchWord, setSearchWord] = useState("");
   const [clientes, setClientes] = useState([]);
@@ -41,7 +40,7 @@ const SearchAndAddCustomer = ({SetClientePedido}) => {
   }, []);
 
   return (
-    <div className={`search-and-add-customer`}>
+    <div className={`search-and-add-customer ${isAlert ? "alert" : ""}`}>
       <i className={`icon bx bx-search bx-sm`}></i>
       <input
         type="text"

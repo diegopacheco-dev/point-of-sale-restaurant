@@ -12,7 +12,11 @@ const EditQuantity = ({
   return (
     <div className="edit-quantity">
       <ButtonIcon
-        action={() => UpdateQuantityItemAction("subtract", idItem)}
+        action={() => {
+          if (cantidad > 1) {
+            UpdateQuantityItemAction("subtract", idItem);
+          }
+        }}
         nameIcon="chevron-down"
         type="secondary"
         sizeIcon="sm"
