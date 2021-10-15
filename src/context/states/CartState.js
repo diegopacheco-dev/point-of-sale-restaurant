@@ -9,6 +9,10 @@ export const CartContext = createContext();
 export const initialStateCart = {
   items: [],
   monto_total: 0,
+  cliente: null,
+  estado_pedido: "",
+  fecha_creacion: "",
+  monto_pagado: 0,
 };
 
 // ===== Componente Principal =====

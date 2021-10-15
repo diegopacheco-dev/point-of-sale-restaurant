@@ -1,19 +1,20 @@
 .list-container {
-    background-color: var(--white);
-    width: 85%;
-    margin-top: 0.2em;
-    margin-left: 0.4em;
-    padding: 0.5em 0;
-    box-shadow: var(--box-shadow-md);
-    position: absolute;
-    top: 100%;
+  background-color: var(--white);
+  width: 85%;
+  margin-top: 0.2em;
+  margin-left: 0.4em;
+  padding: 0.5em 0;
+  box-shadow: var(--box-shadow-md);
+  position: absolute;
+  top: 100%;
 }
 
 .list-item {
-    padding: 0.4em 0.9em;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
 }
 
 .list-item:hover {
-    background-color: var(--color-primary);
-    color: var(--white);
+  background-color: var(--color-primary);
+  color: var(--white);
 }

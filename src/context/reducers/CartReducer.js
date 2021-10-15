@@ -1,5 +1,5 @@
 // lOS REDUCER RECIBEN EL STATE Y EL OBJETO QUE LE MANDA EL DISPATCH
-import { ADD, DELETE, UPDATE_QUANTIFY } from "../types";
+import { ADD, DELETE, UPDATE_QUANTIFY, SET_CLIENTE_PEDIDO } from "../types";
 
 const calcularMontoTotal = (items) => {
   let nuevoMonto = items.reduce((suma, item) => {
@@ -65,6 +65,14 @@ const CartReducer = (state, { type, payload }) => {
       ...state,
       items: items,
       monto_total: calcularMontoTotal(items),
+    };
+  }
+
+  if (type === SET_CLIENTE_PEDIDO) {
+    console.log("cliente ", payload);
+    return {
+      ...state,
+      cliente: payload,
     };
   }
 };

@@ -2,19 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 
-const List = ({ clientes = [], action }) => {
-  // clientes = [
-  //   { name: "diego" },
-  //   { name: "erick" },
-  //   { name: "loan" },
-  //   { name: "mateo" },
-  // ];
-
+const List = ({ clientes = [], SetClientePedido }) => {
   return clientes.length > 0 ? (
     <ul class="list-container">
-      {clientes.map((cliente, id) => (
-        <li key={id} onClick={() => action()} className="list-item">
-          {cliente.name}
+      {clientes?.map((cliente) => (
+        <li
+          key={cliente?.id}
+          onClick={() => SetClientePedido(cliente)}
+          className="list-item"
+        >
+          {cliente?.nombre + " " + cliente.apellidos}
         </li>
       ))}
     </ul>

@@ -1,4 +1,4 @@
-import { ADD, UPDATE_QUANTIFY, DELETE } from "../types";
+import { ADD, UPDATE_QUANTIFY, DELETE, SET_CLIENTE_PEDIDO } from "../types";
 
 export const CartActions = (state, dispatch) => {
   const AddItemAction = (objItem) => {
@@ -13,5 +13,9 @@ export const CartActions = (state, dispatch) => {
     dispatch({ type: DELETE, payload: idItem });
   };
 
-  return { AddItemAction, UpdateQuantityItemAction, DeleteItemAction };
+  const SetClientePedido = (objCliente) => {
+    dispatch({ type: SET_CLIENTE_PEDIDO, payload: objCliente });
+  };
+
+  return { AddItemAction, UpdateQuantityItemAction, DeleteItemAction, SetClientePedido };
 };
