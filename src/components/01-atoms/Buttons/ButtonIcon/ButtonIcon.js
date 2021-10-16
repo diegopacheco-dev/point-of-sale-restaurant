@@ -10,7 +10,7 @@ const ButtonIcon = ({
 }) => {
   return (
     <i
-      onClick={() => action()}
+      onClick={action}
       className={`button-icon ${type} icon bx bx-${nameIcon} bx-${sizeIcon}`}
     ></i>
   );

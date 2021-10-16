@@ -1,5 +1,14 @@
 // lOS REDUCER RECIBEN EL STATE Y EL OBJETO QUE LE MANDA EL DISPATCH
-import { ADD, DELETE, UPDATE_QUANTIFY, SET_CLIENTE_PEDIDO } from "../types";
+import {
+  ADD,
+  DELETE,
+  UPDATE_QUANTIFY,
+  SET_CLIENTE_PEDIDO,
+  SET_ESTADO_PEDIDO,
+  SET_PAGAR_MONTO,
+  CLEAN_SHOPPING_CART,
+} from "../types";
+import { initialStateCart } from "../states/CartState";
 
 const calcularMontoTotal = (items) => {
   let nuevoMonto = items.reduce((suma, item) => {
@@ -50,28 +59,45 @@ const CartReducer = (state, { type, payload }) => {
   }
   if (type === UPDATE_QUANTIFY) {
     let { items } = state;
-    const item = items.find((item) => item.id === payload.idItem);
+    let item = items.find((item) => item.id === payload.idItem);
     if (payload.operation === "add") {
       item.cantidad++;
     } else {
-      if (item.cantidad > 1) {
+      if (item?.cantidad > 1) {
         item.cantidad--;
       }
     }
-    console.log("item reducer ", item);
     return {
       ...state,
       items: items,
       monto_total: calcularMontoTotal(items),
+      monto_pagado: 0,
     };
   }
 
   if (type === SET_CLIENTE_PEDIDO) {
-    console.log("cliente ", payload);
     return {
       ...state,
       cliente: payload,
     };
+  }
+
+  if (type === SET_ESTADO_PEDIDO) {
+    return {
+      ...state,
+      estado_pedido: payload,
+    };
+  }
+
+  if (type === SET_PAGAR_MONTO) {
+    return {
+      ...state,
+      monto_pagado: payload,
+    };
+  }
+
+  if (type === CLEAN_SHOPPING_CART) {
+    return { ...initialStateCart, items: [] };
   }
 };
 

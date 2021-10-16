@@ -13,7 +13,6 @@ const CustomerCard = ({ name, SetClientePedido = () => {} }) => {
       </div>
       <ButtonIcon
         nameIcon="x"
-        action=""
         sizeIcon="sm"
         action={() => SetClientePedido(null)}
       />

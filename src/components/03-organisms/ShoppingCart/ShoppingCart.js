@@ -30,7 +30,7 @@ const ShoppingCart = ({ action }) => {
   useEffect(() => {
     // reseteamos el areaError con cada cambio del carrito y nombre
     setAreaError(null);
-  }, [items.length, cliente]);
+  }, [items?.length, cliente]);
 
   return (
     <div className="shopping-cart">

@@ -14,9 +14,7 @@ const PosPage = (props) => {
     false
   );
   const [idCategoriaSeleccionada, setIdCategoriaSeleccionada] = useState(null);
-  const { AddItemAction, items } = useContext(CartContext);
-
-  console.log("show confirmation box ", showOrderConfirmationBox);
+  const { AddItemAction, items, cliente } = useContext(CartContext);
 
   return (
     <div className="pos-template">
@@ -46,7 +44,7 @@ const PosPage = (props) => {
         <div className="btn-shoppingCart">
           <ButtonIcon nameIcon="x" action={() => setShowShoppingCart(false)} />
         </div>
-        {showOrderConfirmationBox ? (
+        {showOrderConfirmationBox && cliente ? (
           <OrderConfirmationBox
             onToggle={() => setShowOrderConfirmationBox(false)}
           />
