@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import ShowStats from "../../03-organisms/ShowStats/ShowStats";
+import { getDocs, collection, query } from "firebase/firestore";
 import "../../04-templates/tablePage-template/styles.css";
+import { db } from "../../../firebase/firebase";
 
 const PedidosPage = () => {
   const data = {
@@ -14,6 +16,11 @@ const PedidosPage = () => {
       {
         label: "Fecha",
         field: "fecha",
+        sort: "asc",
+      },
+      {
+        label: "Hora",
+        field: "hora",
         sort: "asc",
       },
       {
@@ -42,45 +49,46 @@ const PedidosPage = () => {
         sort: "asc",
       },
     ],
-    rows: [
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-    ],
+    rows: [],
   };
+
+  const [pedidos, setPedidos] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const filas = pedidos.map((pedido) => {
+    const fecha = new Date(pedido?.fecha_creacion?.seconds * 1000);
+    return {
+      nombre: `${pedido?.cliente?.nombre} ${pedido.cliente?.apellidos}`,
+      fecha: fecha.toLocaleString().split(" ")[0],
+      hora: fecha.toLocaleString().split(" ")[1],
+      cantidad_platos: pedido.items.length,
+      costo_total: `S/ ${pedido.monto_total}`,
+      monto_pagado: `S/ ${pedido.monto_pagado}`,
+      estado_entrega: pedido.estado_pedido,
+      acciones: <button>Ver detalle</button>,
+    };
+  });
+
+  data.rows = filas.length > 0 ? filas : [];
+
+  useEffect(() => {
+    const getPedidos = async () => {
+      try {
+        setLoading(true);
+        const { docs } = await getDocs(collection(db, "pedidos"));
+        const data = docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPedidos(data);
+        setLoading(false);
+      } catch (err) {
+        console.log("Error: ", err);
+        setLoading(false);
+      }
+    };
+    getPedidos();
+  }, []);
 
   return (
     <div className="table-page-template">
