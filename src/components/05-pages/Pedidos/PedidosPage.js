@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import ShowStats from "../../03-organisms/ShowStats/ShowStats";
+import Button from "../../01-atoms/Buttons/Button/Button";
 import { getDocs, collection, query } from "firebase/firestore";
 import "../../04-templates/tablePage-template/styles.css";
 import { db } from "../../../firebase/firebase";
+import Loader from "../../01-atoms/Loader/Loader";
 
 const PedidosPage = () => {
   const data = {
@@ -44,9 +46,7 @@ const PedidosPage = () => {
         sort: "asc",
       },
       {
-        label: "Acciones",
         field: "acciones",
-        sort: "asc",
       },
     ],
     rows: [],
@@ -65,7 +65,11 @@ const PedidosPage = () => {
       costo_total: `S/ ${pedido.monto_total}`,
       monto_pagado: `S/ ${pedido.monto_pagado}`,
       estado_entrega: pedido.estado_pedido,
-      acciones: <button>Ver detalle</button>,
+      acciones: (
+        <Button size="sm" style={{ width: "8rem" }}>
+          Ver detalle
+        </Button>
+      ),
     };
   });
 
@@ -80,7 +84,9 @@ const PedidosPage = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setPedidos(data);
+        if (Array.isArray(data)) {
+          setPedidos(data);
+        }
         setLoading(false);
       } catch (err) {
         console.log("Error: ", err);
@@ -94,10 +100,10 @@ const PedidosPage = () => {
     <div className="table-page-template">
       <div className="table-page-template__col-1">
         <div className="header">
-          <ShowStats />
+          <ShowStats orders={pedidos} />
         </div>
         <div className="body">
-          <DataTable title="Lista de Pedidos" data={data} loading={false} />
+          <DataTable title="Lista de Pedidos" data={data} loading={loading} />
         </div>
       </div>
       <div className="table-page-template__col-2">

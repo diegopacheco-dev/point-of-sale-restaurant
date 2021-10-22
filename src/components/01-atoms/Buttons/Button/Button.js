@@ -8,12 +8,14 @@ const Button = ({
   type = "primary",
   action = () => {},
   disabled = false,
+  ...props
 }) => {
   return (
     <button
       disabled={disabled}
       onClick={action}
       className={`button ${size} ${type}`}
+      {...props}
     >
       {children}
     </button>

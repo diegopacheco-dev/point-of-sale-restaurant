@@ -1,6 +1,9 @@
-import React from "react";
+import { collection, getDocs } from "@firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { db } from "../../../firebase/firebase";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import ShowStats from "../../03-organisms/ShowStats/ShowStats";
+import Button from "../../01-atoms/Buttons/Button/Button";
 import "../../04-templates/tablePage-template/styles.css";
 
 const ClientesPage = () => {
@@ -12,75 +15,58 @@ const ClientesPage = () => {
         sort: "asc",
       },
       {
-        label: "Fecha",
-        field: "fecha",
+        label: "Apellidos",
+        field: "apellidos",
         sort: "asc",
       },
       {
-        label: "Cantidad Platos",
-        field: "cantidad_platos",
+        label: "Celular",
+        field: "celular",
         sort: "asc",
       },
       {
-        label: "Total",
-        field: "costo_total",
-        sort: "asc",
-      },
-      {
-        label: "Monto Pagado",
-        field: "monto_pagado",
-        sort: "asc",
-      },
-      {
-        label: "Entrega",
-        field: "estado_entrega",
-        sort: "asc",
-      },
-      {
-        label: "Acciones",
+        label: "",
         field: "acciones",
-        sort: "asc",
       },
     ],
-    rows: [
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-      {
-        nombre: "Diego",
-        fecha: "10/05/2020",
-        cantidad_platos: 30,
-        costo_total: `S/ ${50}`,
-        monto_pagado: `S/ ${30}`,
-        estado_entrega: "entregado",
-        acciones: <button>Hola mundo</button>,
-      },
-    ],
+    rows: [],
   };
+
+  const [clientes, setClientes] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const filas = clientes.map((cliente) => {
+    return {
+      nombre: cliente.nombre,
+      apellidos: cliente.apellidos,
+      celular: cliente.celular,
+      acciones: <Button size="sm" style={{"width": "8rem"}}>Ver detalle</Button>,
+    };
+  });
+
+  data.rows = filas.length > 0 ? filas : [];
+
+  useEffect(() => {
+    const getClientes = async () => {
+      try {
+        setLoading(true);
+        const { docs } = await getDocs(collection(db, "clientes"));
+        const data = docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        if (Array.isArray(data)) {
+          setClientes(data);
+        }
+        setLoading(false);
+      } catch (err) {
+        console.log("Error ", err);
+        setLoading(false);
+      }
+    };
+    getClientes();
+  }, []);
+
   return (
     <div className="table-page-template">
       <div className="table-page-template__col-1">
@@ -88,7 +74,7 @@ const ClientesPage = () => {
           <ShowStats />
         </div>
         <div className="body">
-          <DataTable data={data} title="Lista de clientes" loading={false} />
+          <DataTable data={data} title="Lista de clientes" loading={loading} />
         </div>
       </div>
       {/* <div className="table-page-template__col-2"></div> */}
