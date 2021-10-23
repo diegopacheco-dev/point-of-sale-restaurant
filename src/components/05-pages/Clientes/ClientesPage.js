@@ -5,6 +5,7 @@ import DataTable from "../../03-organisms/DataTable/DataTable";
 import ShowStats from "../../03-organisms/ShowStats/ShowStats";
 import Button from "../../01-atoms/Buttons/Button/Button";
 import "../../04-templates/tablePage-template/styles.css";
+import Heading from "../../01-atoms/Heading/Heading";
 
 const ClientesPage = () => {
   const data = {
@@ -40,7 +41,11 @@ const ClientesPage = () => {
       nombre: cliente.nombre,
       apellidos: cliente.apellidos,
       celular: cliente.celular,
-      acciones: <Button size="sm" style={{"width": "8rem"}}>Ver detalle</Button>,
+      acciones: (
+        <Button size="sm" style={{ width: "8rem" }}>
+          Ver detalle
+        </Button>
+      ),
     };
   });
 
@@ -67,11 +72,20 @@ const ClientesPage = () => {
     getClientes();
   }, []);
 
+  const stats = [
+    {
+      number: clientes.length,
+      label: "Clientes",
+    },
+  ];
+
   return (
     <div className="table-page-template">
       <div className="table-page-template__col-1">
         <div className="header">
-          <ShowStats />
+          <Heading size="lg">Clientes</Heading>
+
+          <ShowStats stats={stats} />
         </div>
         <div className="body">
           <DataTable data={data} title="Lista de clientes" loading={loading} />

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import ShowStats from "../../03-organisms/ShowStats/ShowStats";
 import Button from "../../01-atoms/Buttons/Button/Button";
-import { getDocs, collection, query } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import "../../04-templates/tablePage-template/styles.css";
 import { db } from "../../../firebase/firebase";
 import Loader from "../../01-atoms/Loader/Loader";
+import Heading from "../../01-atoms/Heading/Heading";
 
 const PedidosPage = () => {
   const data = {
@@ -96,14 +97,40 @@ const PedidosPage = () => {
     getPedidos();
   }, []);
 
+  const pedidos_totales = pedidos?.length;
+  const monto_vendido = pedidos?.reduce(
+    (monto, pedido) => monto + pedido.monto_total,
+    0
+  );
+  const por_cobrar =
+    monto_vendido -
+    pedidos?.reduce((monto, pedido) => monto + pedido.monto_pagado, 0);
+
+  const stats = [
+    {
+      number: pedidos_totales,
+      label: "Pedidos Totales",
+    },
+    {
+      number: `S/ ${monto_vendido}`,
+      label: "Monto Vendido",
+    },
+    {
+      number: `S/ ${por_cobrar}`,
+      label: "Por Cobrar",
+    },
+  ];
+
   return (
     <div className="table-page-template">
       <div className="table-page-template__col-1">
         <div className="header">
-          <ShowStats orders={pedidos} />
+          <Heading size="lg">Pedidos</Heading>
+
+          <ShowStats stats={stats} />
         </div>
         <div className="body">
-          <DataTable title="Lista de Pedidos" data={data} loading={loading} />
+          <DataTable title="Lista de Clientes" data={data} loading={loading} />
         </div>
       </div>
       <div className="table-page-template__col-2">
