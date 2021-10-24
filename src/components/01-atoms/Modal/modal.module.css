@@ -1,0 +1,26 @@
+.modal {
+  z-index: 1900;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+.modal_overlay {
+  z-index: 1901;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal_content {
+  height: 100%;
+  width: 100%;
+  z-index: 1902;
+  display: grid;
+  place-items: center;
+}
+
+.modal_content div {
+  z-index: 1903;
+}
