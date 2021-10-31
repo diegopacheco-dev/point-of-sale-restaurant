@@ -68,6 +68,8 @@ const OrderConfirmationBox = ({ onToggle = () => {} }) => {
     });
   };
 
+
+  // Controla que el componente no se muestre cuando haya 0 items en el carrito
   useEffect(() => {
     let mounted = true;
     if (mounted && items.length === 0) {
@@ -94,14 +96,14 @@ const OrderConfirmationBox = ({ onToggle = () => {} }) => {
           <Button
             action={() => SetEstadoPedidoAction("pendiente")}
             size="sm"
-            type={`${estado_pedido === "entregado" ? "secondary" : "primary"}`}
+            variant={`${estado_pedido === "entregado" ? "secondary" : "primary"}`}
           >
             Pendiente
           </Button>
           <Button
             action={() => SetEstadoPedidoAction("entregado")}
             size="sm"
-            type={estado_pedido === "entregado" ? "primary" : "secondary"}
+            variant={estado_pedido === "entregado" ? "primary" : "secondary"}
           >
             Entregado
           </Button>
@@ -135,7 +137,7 @@ const OrderConfirmationBox = ({ onToggle = () => {} }) => {
           {loading ? <Loader size="sm" /> : null}
           {!loading ? (
             <>
-              <Button action={onToggle} type="secondary">
+              <Button action={onToggle} variant="secondary">
                 Cancelar
               </Button>
               <Button action={crearPedido}>Confirmar</Button>

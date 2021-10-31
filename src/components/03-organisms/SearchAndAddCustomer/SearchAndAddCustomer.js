@@ -13,6 +13,7 @@ const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
 
   const [modalCrearCliente, setModalCrearCliente] = useState(false);
   const onToggleModal = () => setModalCrearCliente((prev) => !prev);
+  const [reloadData, setReloadData] = useState(false);
 
   const handleChange = (e) => {
     // BUSCAR COINCIDENCIAS
@@ -41,11 +42,16 @@ const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
       }
     };
     getClientes();
-  }, []);
+  }, [reloadData]);
 
   return (
     <>
-      <ModalCrearCliente onToggle={onToggleModal} isOpen={modalCrearCliente} />
+      <ModalCrearCliente
+        setClientePedido={SetClientePedido}
+        onToggle={onToggleModal}
+        isOpen={modalCrearCliente}
+        reloadData={() => setReloadData((prev) => !prev)}
+      />
       <div className={`search-and-add-customer ${isAlert ? "alert" : ""}`}>
         <i className={`icon bx bx-search bx-sm`}></i>
         <input
