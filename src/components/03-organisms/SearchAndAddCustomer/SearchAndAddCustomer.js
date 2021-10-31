@@ -4,11 +4,15 @@ import { collection, getDocs } from "firebase/firestore";
 import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
 import List from "../../02-molecules/List/List";
 import "./styles.css";
+import ModalCrearCliente from "../../02-molecules/ModalCrearCliente/ModalCrearCliente";
 
 const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
   const [sugerencias, setSugerencias] = useState([]);
   const [searchWord, setSearchWord] = useState("");
   const [clientes, setClientes] = useState([]);
+
+  const [modalCrearCliente, setModalCrearCliente] = useState(false);
+  const onToggleModal = () => setModalCrearCliente((prev) => !prev);
 
   const handleChange = (e) => {
     // BUSCAR COINCIDENCIAS
@@ -40,17 +44,20 @@ const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
   }, []);
 
   return (
-    <div className={`search-and-add-customer ${isAlert ? "alert" : ""}`}>
-      <i className={`icon bx bx-search bx-sm`}></i>
-      <input
-        type="text"
-        placeholder="Buscar cliente"
-        value={searchWord}
-        onChange={handleChange}
-      />
-      <ButtonIcon nameIcon="plus-circle" action={() => alert("hola mundo")} />
-      <List clientes={sugerencias} SetClientePedido={SetClientePedido} />
-    </div>
+    <>
+      <ModalCrearCliente onToggle={onToggleModal} isOpen={modalCrearCliente} />
+      <div className={`search-and-add-customer ${isAlert ? "alert" : ""}`}>
+        <i className={`icon bx bx-search bx-sm`}></i>
+        <input
+          type="text"
+          placeholder="Buscar cliente"
+          value={searchWord}
+          onChange={handleChange}
+        />
+        <ButtonIcon nameIcon="plus-circle" action={onToggleModal} />
+        <List clientes={sugerencias} SetClientePedido={SetClientePedido} />
+      </div>
+    </>
   );
 };
 

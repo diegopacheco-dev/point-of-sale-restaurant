@@ -1,0 +1,24 @@
+.detalle-pedido * {
+    margin: 0;
+    padding: 0;
+}
+
+.detalle-pedido {
+    /* background-color: red; */
+    max-width: 1000px;  
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+
+.detalle-pedido__cliente {
+
+}
+
+.detalle-pedido__status-delivery {
+
+}
+
+.detalle-pedido__lista-platos {
+
+}

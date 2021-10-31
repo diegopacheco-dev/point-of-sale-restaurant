@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom'
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import ShowStats from "../../03-organisms/ShowStats/ShowStats";
 import Button from "../../01-atoms/Buttons/Button/Button";
@@ -53,6 +54,7 @@ const data = {
 };
 
 const PedidosPage = () => {
+  const history = useHistory()
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpenModalPedido, setIsOpenModalPedido] = useState(false);
@@ -71,7 +73,7 @@ const PedidosPage = () => {
         estado_entrega: pedido.estado_pedido,
         acciones: (
           <Button
-            onClick={() => setIsOpenModalPedido(true)}
+            onClick={() => history.push(`/pedidos/detalle-pedido/:${pedido?.id}`, {nombre: "Diego"})}
             size="sm"
             style={{ width: "8rem" }}
           >
