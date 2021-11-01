@@ -7,6 +7,7 @@ import PosPage from "../../components/05-pages/POS/PosPage";
 import MainLayout from "../../mainLayout";
 import CartState from "../../context/states/CartState";
 import DetallePedidoPage from "../../components/05-pages/DetallePedido/DetallePedidoPage";
+import PedidosCliente from "../../components/05-pages/DetalleCliente/PedidosCliente";
 
 const AdminRouter = () => {
   return (
@@ -22,6 +23,7 @@ const AdminRouter = () => {
               component={DetallePedidoPage}
             />
             <Route exact path="/clientes" component={ClientesPage} />
+            <Route exact path="/clientes/pedidos-cliente/:id" component={PedidosCliente} />
             <Route exact path="/administrar" component={AdministrarPage} />
           </Switch>
         </MainLayout>

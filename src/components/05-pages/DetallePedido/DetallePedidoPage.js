@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import Heading from "../../01-atoms/Heading/Heading";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import "./styles.css";
@@ -7,9 +7,11 @@ import "./styles.css";
 const DetallePedidoPage = () => {
   const history = useHistory();
   const params = useParams();
+  const location = useLocation();
 
-  console.log("history ", history);
+  console.log("history state ", history.location.state);
   console.log("params ", params);
+  console.log("location ", location);
 
   return (
     <div className="detalle-pedido">

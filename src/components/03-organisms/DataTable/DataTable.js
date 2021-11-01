@@ -4,7 +4,11 @@ import { MDBDataTableV5 } from "mdbreact";
 import "./styles.css";
 import Loader from "../../01-atoms/Loader/Loader";
 
-const DataTable = ({ title = "", data = [], loading = true }) => {
+const DataTable = ({
+  title = "",
+  data = [],
+  loading = true,
+}) => {
   return (
     <div className="data-table vertical-space-1">
       <Heading>{title}</Heading>

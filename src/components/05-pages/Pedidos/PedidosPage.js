@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import ShowStats from "../../03-organisms/ShowStats/ShowStats";
 import Button from "../../01-atoms/Buttons/Button/Button";
@@ -54,14 +54,17 @@ const data = {
 };
 
 const PedidosPage = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpenModalPedido, setIsOpenModalPedido] = useState(false);
   const onToggleModalPedido = () => setIsOpenModalPedido(!isOpenModalPedido);
+  const [dataPedidos, setDataPedidos] = useState();
 
-  const generarDataTablaPedidos = () => {
+  const generarDataTablaPedidos = (pedidos) => {
     const filas = pedidos.map((pedido) => {
+      const goToDetail = (pedido) =>
+        history.push(`/pedidos/detalle-pedido/${pedido?.id}`, "hola mundo");
       const fecha = new Date(pedido?.fecha_creacion?.seconds * 1000);
       return {
         nombre: `${pedido?.cliente?.nombre} ${pedido.cliente?.apellidos}`,
@@ -73,7 +76,7 @@ const PedidosPage = () => {
         estado_entrega: pedido.estado_pedido,
         acciones: (
           <Button
-            onClick={() => history.push(`/pedidos/detalle-pedido/:${pedido?.id}`, {nombre: "Diego"})}
+            action={() => goToDetail(pedido)}
             size="sm"
             style={{ width: "8rem" }}
           >
@@ -84,8 +87,11 @@ const PedidosPage = () => {
     });
 
     data.rows = filas.length > 0 ? filas : [];
-    return data;
+    console.log("data ", data);
+    setDataPedidos(data);
   };
+
+  console.log("data pedidos ", dataPedidos);
 
   useEffect(() => {
     const getPedidos = async () => {
@@ -98,6 +104,7 @@ const PedidosPage = () => {
         }));
         if (Array.isArray(data)) {
           setPedidos(data);
+          generarDataTablaPedidos(data);
         }
         setLoading(false);
       } catch (err) {
@@ -151,7 +158,7 @@ const PedidosPage = () => {
           <div className="body">
             <DataTable
               title="Lista de Pedidos"
-              data={generarDataTablaPedidos()}
+              data={dataPedidos}
               loading={loading}
             />
           </div>

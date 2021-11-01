@@ -6,8 +6,18 @@ import ShowStats from "../../03-organisms/ShowStats/ShowStats";
 import Button from "../../01-atoms/Buttons/Button/Button";
 import "../../04-templates/tablePage-template/styles.css";
 import Heading from "../../01-atoms/Heading/Heading";
+import { useHistory } from "react-router";
+import "./styles.css";
+import ModalEditarCliente from "../../02-molecules/ModalEditarCliente/ModalEditarCliente";
 
 const ClientesPage = () => {
+  const [modalEditarCliente, setModalEditarCliente] = useState(false);
+  const onToggle = () => setModalEditarCliente((prevState) => !prevState);
+  const [reloadData, setReloadData] = useState(false);
+  const [objClienteModal, setObjClienteModal] = useState({});
+  const resetClienteModal = () => setObjClienteModal({});
+
+  const history = useHistory();
   const data = {
     columns: [
       {
@@ -42,9 +52,26 @@ const ClientesPage = () => {
       apellidos: cliente.apellidos,
       celular: cliente.celular,
       acciones: (
-        <Button size="sm" style={{ width: "8rem" }}>
-          Ver detalle
-        </Button>
+        <div className="clientes__actions">
+          <Button
+            action={() => {
+              setObjClienteModal(cliente);
+              onToggle();
+            }}
+            variant="secondary"
+            size="sm"
+            style={{ width: "8rem" }}
+          >
+            Editar
+          </Button>
+          <Button
+            action={() => history.push("/clientes/pedidos-cliente/1")}
+            size="sm"
+            style={{ width: "8rem" }}
+          >
+            Pedidos
+          </Button>
+        </div>
       ),
     };
   });
@@ -70,7 +97,7 @@ const ClientesPage = () => {
       }
     };
     getClientes();
-  }, []);
+  }, [reloadData]);
 
   const stats = [
     {
@@ -80,19 +107,32 @@ const ClientesPage = () => {
   ];
 
   return (
-    <div className="table-page-template">
-      <div className="table-page-template__col-1">
-        <div className="header">
-          <Heading size="lg">Clientes</Heading>
+    <>
+      <ModalEditarCliente
+      resetClienteModal={resetClienteModal}
+        isOpen={modalEditarCliente}
+        onToggle={onToggle}
+        reloadData={() => setReloadData((prev) => !prev)}
+        cliente={objClienteModal}
+      />
+      <div className="table-page-template">
+        <div className="table-page-template__col-1">
+          <div className="header">
+            <Heading size="lg">Clientes</Heading>
 
-          <ShowStats stats={stats} />
+            <ShowStats stats={stats} />
+          </div>
+          <div className="body">
+            <DataTable
+              data={data}
+              title="Lista de clientes"
+              loading={loading}
+            />
+          </div>
         </div>
-        <div className="body">
-          <DataTable data={data} title="Lista de clientes" loading={loading} />
-        </div>
+        {/* <div className="table-page-template__col-2"></div> */}
       </div>
-      {/* <div className="table-page-template__col-2"></div> */}
-    </div>
+    </>
   );
 };
 
