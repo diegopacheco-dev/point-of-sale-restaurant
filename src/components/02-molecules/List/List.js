@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 
-const List = ({ clientes = [], SetClientePedido }) => {
-  return clientes.length > 0 ? (
+const List = ({ clientes = [], SetClientePedido, searchWord = "" }) => {
+  return (
     <ul class="list-container">
       {clientes?.map((cliente) => (
         <li
@@ -14,8 +14,11 @@ const List = ({ clientes = [], SetClientePedido }) => {
           {cliente?.nombre + " " + cliente.apellidos}
         </li>
       ))}
+      {searchWord.length > 2 && clientes.length === 0 ? (
+        <li className="list-item">Sin resultados</li>
+      ) : null}
     </ul>
-  ) : null;
+  );
 };
 
 export default List;

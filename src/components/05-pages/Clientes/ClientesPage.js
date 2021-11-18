@@ -65,7 +65,9 @@ const ClientesPage = () => {
             Editar
           </Button>
           <Button
-            action={() => history.push("/clientes/pedidos-cliente/1")}
+            action={() =>
+              history.push(`/clientes/pedidos-cliente/${cliente.id}`, cliente)
+            }
             size="sm"
             style={{ width: "8rem" }}
           >
@@ -109,7 +111,7 @@ const ClientesPage = () => {
   return (
     <>
       <ModalEditarCliente
-      resetClienteModal={resetClienteModal}
+        resetClienteModal={resetClienteModal}
         isOpen={modalEditarCliente}
         onToggle={onToggle}
         reloadData={() => setReloadData((prev) => !prev)}

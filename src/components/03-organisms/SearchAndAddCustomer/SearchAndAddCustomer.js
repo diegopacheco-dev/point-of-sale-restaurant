@@ -61,7 +61,7 @@ const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
           onChange={handleChange}
         />
         <ButtonIcon nameIcon="plus-circle" action={onToggleModal} />
-        <List clientes={sugerencias} SetClientePedido={SetClientePedido} />
+        <List clientes={sugerencias} SetClientePedido={SetClientePedido} searchWord={searchWord} />
       </div>
     </>
   );

@@ -8,6 +8,7 @@ const DataTable = ({
   title = "",
   data = [],
   loading = true,
+
 }) => {
   return (
     <div className="data-table vertical-space-1">

@@ -71,9 +71,23 @@ const ModalEditarCliente = ({
     });
   };
 
+  const isChangeForm = () => {
+    if (
+      formCliente.nombre === cliente.nombre &&
+      formCliente.apellidos === cliente.apellidos &&
+      formCliente.celular === cliente.celular
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    editarCliente();
+    if (isChangeForm()) {
+      editarCliente();
+    }
   };
 
   return (
