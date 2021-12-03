@@ -8,9 +8,7 @@
 .detalle-page .header {
   padding: 1rem;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  /* background-color: white; */
+  background-color: red;
 }
 
 .detalle-page .header .title {

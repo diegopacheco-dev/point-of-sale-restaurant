@@ -1,0 +1,37 @@
+.administrar-page-template {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.administrar-page-template__col-1 {
+  flex: 100%;
+  overflow: hidden;
+}
+
+.administrar-page-template__col-1 .header {
+  padding: 1rem;
+}
+
+.administrar-page-template__col-1 .body {
+  padding: 1rem 1rem 2rem;
+  width: 100%;
+}
+
+/* DATA TABLE  */
+.administrar-page-template__col-1 .data-table {
+  border-radius: var(--border-radius-3xl);
+  padding: 1.5rem 1rem;
+  background-color: var(--white);
+  box-shadow: var(--box-shadow-xl);
+  width: 100%;
+}
+
+.administrar-page-template__col-1 .data-table__wrapper {
+}
+
+.administrar-page-template__col-2 {
+  flex: 100%;
+  padding: 1rem;
+}

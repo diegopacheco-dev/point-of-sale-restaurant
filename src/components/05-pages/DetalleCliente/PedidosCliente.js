@@ -5,7 +5,7 @@ import { db } from "../../../firebase/firebase";
 import Heading from "../../01-atoms/Heading/Heading";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import Button from "../../01-atoms/Buttons/Button/Button";
-import "./styles.css";
+import styles from "./styles.module.css";
 import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
 
 const PedidosCliente = () => {
@@ -142,16 +142,12 @@ const PedidosCliente = () => {
       </span>
       {/* Header  */}
       <div className="header">
-        <div className="title">
-          <Heading align="center">
-            Pedidos: {cliente?.nombre} {cliente?.apellidos}
-          </Heading>
-        </div>
+        <Heading align="center">Pedidos</Heading>
         <div className="header-info">
-          {/* <p>Cliente: </p>
+          <p>Cliente: </p>
           <Heading size="sm">
             {cliente?.nombre} {cliente?.apellidos}
-          </Heading> */}
+          </Heading>
           <p>Celular: </p>
           <Heading size="sm">{cliente?.celular}</Heading>
         </div>
