@@ -157,6 +157,7 @@ const PedidosPage = () => {
           </div>
           <div className="body">
             <DataTable
+              shadow={false}
               title="Lista de Pedidos"
               data={dataPedidos}
               loading={loading}

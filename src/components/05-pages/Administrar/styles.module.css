@@ -1,17 +1,21 @@
-.administrar-page-template {
+.container {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.administrar-page-template__col-1 {
+.column1 {
   flex: 100%;
   overflow: hidden;
+  width: 100%;
 }
 
-.administrar-page-template__col-1 .header {
+.header {
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .administrar-page-template__col-1 .body {

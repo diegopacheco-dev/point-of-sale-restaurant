@@ -8,15 +8,16 @@ const DataTable = ({
   title = "",
   data = [],
   loading = true,
-
+  shadow = true,
 }) => {
   return (
     <div className="data-table vertical-space-1">
       <Heading>{title}</Heading>
       {loading ? <Loader /> : null}
       {loading ? null : (
-        <div className="data-table__wrapper">
+        <div className={`table__wrapper ${shadow? 'shadow': ''}`}>
           <MDBDataTableV5
+          noRecordsFoundLabel="Tabla vacia"
             responsive
             striped
             hover
@@ -26,7 +27,6 @@ const DataTable = ({
           />
         </div>
       )}
-      {!loading && data?.rows?.length === 0 ? <p>Tabla vacía</p> : null}
     </div>
   );
 };

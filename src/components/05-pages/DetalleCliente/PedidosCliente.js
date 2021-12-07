@@ -141,9 +141,9 @@ const PedidosCliente = () => {
         />
       </span>
       {/* Header  */}
-      <div className="header">
+      <div className={styles.header}>
         <Heading align="center">Pedidos</Heading>
-        <div className="header-info">
+        <div className={styles.headerInfo}>
           <p>Cliente: </p>
           <Heading size="sm">
             {cliente?.nombre} {cliente?.apellidos}
@@ -154,7 +154,7 @@ const PedidosCliente = () => {
       </div>
 
       <div className="body">
-        <DataTable data={pedidosCliente} loading={loadingPedidos} />
+        <DataTable shadow={false} data={pedidosCliente} loading={loadingPedidos} />
       </div>
     </div>
   );

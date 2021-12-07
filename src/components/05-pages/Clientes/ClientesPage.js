@@ -126,6 +126,7 @@ const ClientesPage = () => {
           </div>
           <div className="body">
             <DataTable
+              shadow={false}
               data={data}
               title="Lista de clientes"
               loading={loading}

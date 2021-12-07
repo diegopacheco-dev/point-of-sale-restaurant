@@ -5,10 +5,11 @@
   width: 100%;
 }
 
-.detalle-page .header {
-  padding: 1rem;
+.header {
   width: 100%;
-  background-color: red;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(107, 107, 107, 0.2);
 }
 
 .detalle-page .header .title {
@@ -20,11 +21,9 @@
   position: absolute;
 }
 
-.detalle-page .header .header-info {
+.headerInfo {
   margin-top: 1.5rem;
   background-color: white;
-  box-shadow: var(--box-shadow-sm);
-  padding: 1.5rem 4rem 1.5rem 1rem;
   border-radius: 1rem;
   width: fit-content;
 }
