@@ -24,12 +24,12 @@
 }
 
 /* DATA TABLE  */
-.administrar-page-template__col-1 .data-table {
+.dataTable {
   border-radius: var(--border-radius-3xl);
   padding: 1.5rem 1rem;
-  background-color: var(--white);
   box-shadow: var(--box-shadow-xl);
   width: 100%;
+
 }
 
 .administrar-page-template__col-1 .data-table__wrapper {
@@ -38,4 +38,11 @@
 .administrar-page-template__col-2 {
   flex: 100%;
   padding: 1rem;
+}
+
+.imgPlato {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 1rem;
 }

@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "../../01-atoms/Heading/Heading";
 import styles from "./styles.module.css";
 import Button from "../../01-atoms/Buttons/Button/Button";
 import Loader from "../../01-atoms/Loader/Loader";
 import ModalCrearProducto from "../../02-molecules/ModalCrearProducto/ModalCrearProducto";
 import DataTable from "../../03-organisms/DataTable/DataTable";
+import { usePlatosServices } from "../../../services/platosServices";
+import Img from "../../01-atoms/Img/Img";
+
+const ImgPlato = ({ src }) => {
+  return (
+    <div className={styles.imgPlato}>
+      <Img src={src} alt="plato" />
+    </div>
+  );
+};
 
 const AdministrarPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { getPlatos, platos, loadingGet } = usePlatosServices();
 
   const data = {
     columns: [
@@ -36,11 +46,31 @@ const AdministrarPage = () => {
     rows: [],
   };
 
+  const armarFilas = (platos) => {
+    const filas = platos.map((plato) => ({
+      imagen: <ImgPlato src={plato.imagen} />,
+      nombre: plato.nombre,
+      categoria: plato.categoria.id,
+      precio: plato.precio,
+    }));
+
+    return { ...data, rows: filas };
+  };
+
+  const refetchTablaPlatos = () => {
+    getPlatos();
+  };
+
+  useEffect(() => {
+    getPlatos();
+  }, []);
+
   return (
     <>
       <ModalCrearProducto
         isOpen={isOpen}
         onToggle={() => setIsOpen((prev) => !prev)}
+        reloadData={refetchTablaPlatos}
       />
       <div className={styles.container}>
         <div className={styles.column1}>
@@ -53,13 +83,13 @@ const AdministrarPage = () => {
             </div>
           </div>
           <div className="body">
-            <div className="data-table vertical-space-1">
+            <div className={styles.dataTable}>
               <DataTable
-              shadow={false}
-              data={data}
-              title="Lista de platos"
-              loading={loading}
-            />
+                shadow={false}
+                data={armarFilas(platos)}
+                title="Lista de platos"
+                loading={loadingGet}
+              />
             </div>
           </div>
         </div>

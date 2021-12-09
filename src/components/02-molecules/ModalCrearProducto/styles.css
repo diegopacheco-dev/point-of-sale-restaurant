@@ -1,9 +1,12 @@
 .modal-crear-producto {
   background-color: white;
   width: 90%;
+  max-height: 80vh;
   border-radius: var(--border-radius-lg);
   padding: 1.5rem 2rem;
   max-width: 25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .modal-crear-producto form {
@@ -22,7 +25,8 @@
   color: var(--color-gray-500);
 }
 
-.modal-crear-producto__form-group input, .modal-crear-producto__form-group select {
+.modal-crear-producto__form-group input,
+.modal-crear-producto__form-group select {
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   width: 100%;
@@ -35,4 +39,19 @@
   padding-top: 1rem;
   display: flex;
   gap: 1rem;
+}
+
+.modal-crear-producto__form-group__error {
+  color: rgba(255, 0, 0, 0.657);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.modal-crear-producto__img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
 }
