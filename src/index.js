@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './index.css'
 import './styles/main.css'
 
 import "@fortawesome/fontawesome-free/css/all.min.css";

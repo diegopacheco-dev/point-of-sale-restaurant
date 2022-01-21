@@ -9,8 +9,6 @@ const ProductsContainer = ({ idCategoriaSeleccionada, AddItemAction }) => {
   const [products, setProducts] = useState([]);
   const [cargando, setCargando] = useState(false);
 
-  console.log("id categoria seleccionada", idCategoriaSeleccionada);
-
   useEffect(() => {
     const getProductosByIdCategoria = async () => {
       try {
@@ -34,8 +32,6 @@ const ProductsContainer = ({ idCategoriaSeleccionada, AddItemAction }) => {
     };
     getProductosByIdCategoria();
   }, [idCategoriaSeleccionada]);
-
-  console.log("productos", products);
 
   return (
     <div className="vertical-space-2">

@@ -21,7 +21,6 @@ export const formCrearPlatoValidation = (objForm) => {
         formIsValid = false;
         errors["imagen"] = "*Por favor, seleccione una imagen";
     }
-    console.log(errors);
     return {
         errors,
         formIsValid,

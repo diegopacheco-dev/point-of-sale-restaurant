@@ -1,16 +1,24 @@
+import { getAuth, signOut } from "firebase/auth";
 import { LOGIN, LOGOUT } from "../types";
 
 // esta funcion es solo un contenedor para las acciones del authstate
 export const AuthActions = (state, dispatch) => {
-  const LoginAction = (user) => {
-    localStorage.setItem("user", JSON.stringify({ ...user, isAuth: true }));
+  const auth = getAuth();
+
+  const loginAction = (user) => {
     dispatch({ type: LOGIN, payload: user });
   };
 
-  const LogoutAction = () => {
-    localStorage.removeItem("user");
-    dispatch({ type: LOGOUT });
+  const logoutAction = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("logout");
+        dispatch({ type: LOGOUT });
+      })
+      .catch((err) => {
+        console.log("error : ", err);
+      });
   };
 
-  return { LoginAction, LogoutAction };
+  return { loginAction, logoutAction };
 };

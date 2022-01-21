@@ -12,7 +12,7 @@ const DeliveryTimeline = ({ idPedido, estado, onAction = () => {} }) => {
       <div className="mt-4 d-flex justify-content-center">
         <div className="item-status">
           <p className="item-status-icon status-icon--active mb-1">
-            <i class="bx bx-sm bxs-basket"></i>
+            <i className="bx bx-sm bxs-basket"></i>
           </p>
           <p className="status-caption status-caption--active">
             Orden <br /> Generada
@@ -23,7 +23,7 @@ const DeliveryTimeline = ({ idPedido, estado, onAction = () => {} }) => {
 
         <div className="item-status">
           <p className="item-status-icon status-icon--active mb-1">
-            <i class="bx bx-sm bxs-cart"></i>
+            <i className="bx bx-sm bxs-cart"></i>
           </p>
 
           <p className="status-caption status-caption--active">Pendiente</p>
@@ -50,7 +50,7 @@ const DeliveryTimeline = ({ idPedido, estado, onAction = () => {} }) => {
                 : "item-status-icon pulse-button mb-1 shadow"
             }
           >
-            <i class="bx bx-md bx-check"></i>
+            <i className="bx bx-md bx-check"></i>
           </p>
 
           <p

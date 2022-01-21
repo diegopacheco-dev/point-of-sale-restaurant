@@ -130,8 +130,6 @@ const PedidosCliente = () => {
     });
   }, []);
 
-  console.log("cliente data ", cliente);
-
   return (
     <div className="detalle-page">
       <span className="btn-back">

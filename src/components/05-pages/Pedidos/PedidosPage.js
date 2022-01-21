@@ -91,8 +91,6 @@ const PedidosPage = () => {
     setDataPedidos(data);
   };
 
-  console.log("data pedidos ", dataPedidos);
-
   useEffect(() => {
     const getPedidos = async () => {
       try {

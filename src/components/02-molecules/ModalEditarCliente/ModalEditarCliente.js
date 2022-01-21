@@ -31,8 +31,6 @@ const ModalEditarCliente = ({
   }, [cliente]);
 
   const [loading, setLoading] = useState(false);
-  console.log("cliente modal ", cliente);
-  console.log("form cliente ", formCliente);
 
   const editarCliente = async () => {
     setLoading(true);

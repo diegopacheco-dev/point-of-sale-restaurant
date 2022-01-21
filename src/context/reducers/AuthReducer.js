@@ -7,7 +7,6 @@ const AuthReducer = (state = initialStateAuth, { type, payload }) => {
       ...state,
       ...payload,
       isAuth: true,
-      loading: false,
     };
   }
 

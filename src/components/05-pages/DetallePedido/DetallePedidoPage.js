@@ -134,7 +134,6 @@ const DetallePedidoPage = () => {
     getPedido(id).then((data) => setPedido(data));
   }, [reloadData]);
 
-  console.log("pedido ", pedido);
   const fecha = new Date(pedido?.fecha_creacion?.seconds * 1000);
 
   return (
@@ -153,7 +152,7 @@ const DetallePedidoPage = () => {
 
       {/* Top Container  */}
       <div className="body-top">
-        <div class="delivery-status">
+        <div className="delivery-status">
           <DeliveryTimeline
             estado={pedido?.estado_pedido}
             idPedido={pedido?.id}
