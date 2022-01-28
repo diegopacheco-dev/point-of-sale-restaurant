@@ -22,4 +22,5 @@ ButtonIcon.propTypes = {
   nameIcon: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired,
   sizeIcon: PropTypes.oneOf(["sm", "md", "lg"]),
+  type: PropTypes.string,
 };

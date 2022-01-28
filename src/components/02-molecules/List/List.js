@@ -4,7 +4,7 @@ import "./styles.css";
 
 const List = ({ clientes = [], SetClientePedido, searchWord = "" }) => {
   return (
-    <ul class="list-container">
+    <ul className="list-container">
       {clientes?.map((cliente) => (
         <li
           key={cliente?.id}
@@ -25,5 +25,4 @@ export default List;
 
 List.propTypes = {
   clientes: PropTypes.array.isRequired,
-  action: PropTypes.func.isRequired,
 };

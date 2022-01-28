@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.css";
-import "boxicons";
 import PropTypes from "prop-types";
 
 const ButtonWithIcon = ({

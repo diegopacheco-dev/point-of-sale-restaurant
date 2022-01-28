@@ -27,5 +27,5 @@ export default Button;
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   size: PropTypes.string,
-  type: PropTypes.oneOf(["primary", "secondary"]),
+  variant: PropTypes.oneOf(["primary", "secondary"]),
 };

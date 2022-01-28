@@ -3,8 +3,12 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import useAuth from "../../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
+import styles from "./styles.module.css";
+import Loader from "../../01-atoms/Loader/Loader";
 
 const LoginPage = () => {
+  const [loading, setLoading] = useState(false);
+  const [msgError, setMsgError] = useState("");
   const history = useHistory();
   const { loginAction, isAuth } = useAuth();
   const auth = getAuth();
@@ -12,8 +16,6 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
-
-  console.log("******** isAuth login ", isAuth);
 
   const handleChange = (e) => {
     setForm({
@@ -24,6 +26,7 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     signInWithEmailAndPassword(auth, formState.email, formState.password)
       .then((rpta) => {
         if (rpta?.user) {
@@ -31,9 +34,20 @@ const LoginPage = () => {
           loginAction();
           history.push("/");
         }
+        setLoading(false);
       })
       .catch((err) => {
-        console.log("error : ", err);
+        if (err?.code === "auth/too-many-requests") {
+          setMsgError("Demasiados intentos incorrectos, intente mas tarde");
+        }
+        if (
+          err?.code === "auth/wrong-password" ||
+          err?.code === "auth/user-not-found"
+        ) {
+          setMsgError("Email o password incorrectos");
+        }
+        console.log(err);
+        setLoading(false);
       });
   };
 
@@ -71,9 +85,14 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <button className="form-button" type="submit">
-              Iniciar sesión
-            </button>
+            {msgError && <p className={styles.msgError}>{msgError}</p>}
+
+            {!loading ? (
+              <button className={styles.formButton} type="submit">
+                Iniciar sesión
+              </button>
+            ) : null}
+            {loading ? <Loader size="sm" /> : null}
           </form>
         </div>
       </div>

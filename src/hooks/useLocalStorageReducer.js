@@ -12,7 +12,7 @@ const useLocalStorageReducer = (key, reducer, defaultValue) => {
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(state));
   }, [state, key]);
-  return [state];
+  return [state, dispatch];
 };
 
 export default useLocalStorageReducer;

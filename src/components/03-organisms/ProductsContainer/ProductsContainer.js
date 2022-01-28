@@ -2,6 +2,7 @@ import { collection, getDocs, query, where } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../../firebase/firebase";
 import Heading from "../../01-atoms/Heading/Heading";
+import Loader from "../../01-atoms/Loader/Loader";
 import ProductCard from "../../02-molecules/ProductCard/ProductCard";
 import "./styles.css";
 
@@ -36,8 +37,8 @@ const ProductsContainer = ({ idCategoriaSeleccionada, AddItemAction }) => {
   return (
     <div className="vertical-space-2">
       <Heading>Productos</Heading>
-      {!idCategoriaSeleccionada ? <p>Selecciona una categoria</p> : null}
-      {cargando ? <p>Cargando...</p> : null}
+      {!idCategoriaSeleccionada && !cargando ? <p>Selecciona una categoria</p> : null}
+      {cargando ? <Loader /> : null}
       <div className="products-container">
         {idCategoriaSeleccionada && !cargando
           ? products.map((product) => {
