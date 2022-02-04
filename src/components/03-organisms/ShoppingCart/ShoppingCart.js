@@ -35,7 +35,7 @@ const ShoppingCart = ({ action }) => {
   return (
     <div className="shopping-cart">
       <div className="shopping-cart__header">
-        <Heading>Pedido</Heading>
+        <Heading align="center">Pedido</Heading>
         <Heading size="xs">Cliente</Heading>
         {cliente ? (
           <CustomerCard
@@ -53,8 +53,8 @@ const ShoppingCart = ({ action }) => {
 
       <div className="shopping-cart__body">
         <div className="shopping-cart__body__header">
-          <Heading>Item</Heading>
-          <Heading>Precio</Heading>
+          <Heading size="sm">Item</Heading>
+          <Heading size="sm">Precio</Heading>
         </div>
         <div className="shopping-cart__body__container">
           {areaError === "carrito" ? <Heading>Carrito vacio</Heading> : null}
@@ -64,8 +64,8 @@ const ShoppingCart = ({ action }) => {
 
       <div className="shopping-cart__footer">
         <div className="shopping-cart__footer__header">
-          <Heading>Total</Heading>
-          <Heading>S/ {monto_total}</Heading>
+          <Heading size="sm">Total</Heading>
+          <Heading size="sm">S/ {monto_total}</Heading>
         </div>
         <Button action={handleConfirmPedido}>Continuar</Button>
       </div>

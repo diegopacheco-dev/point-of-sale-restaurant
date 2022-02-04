@@ -5,7 +5,7 @@ import ChooseCategory from "../../03-organisms/ChooseCategory/ChooseCategory";
 import ProductsContainer from "../../03-organisms/ProductsContainer/ProductsContainer";
 import ShoppingCart from "../../03-organisms/ShoppingCart/ShoppingCart";
 import { CartContext } from "../../../context/states/CartState";
-import "../../04-templates/pos-template/styles.css";
+import './styles.css'
 import OrderConfirmationBox from "../../03-organisms/OrderConfirmationBox/OrderConfirmationBox";
 
 const PosPage = (props) => {
