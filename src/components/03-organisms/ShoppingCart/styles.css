@@ -8,6 +8,8 @@
   width: 100%;
   /* max-width: 20rem; */
   padding: 1rem;
+  padding-bottom: 4.5rem;
+  overflow-y: auto;
 }
 
 .shopping-cart__header {
