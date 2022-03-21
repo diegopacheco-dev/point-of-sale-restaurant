@@ -7,15 +7,9 @@
   box-shadow: var(--box-shadow-md);
   position: relative;
 }
-.search-and-add-customer.alert {
-  box-shadow: var(--box-shadow-alert);
-  background-color: var(--white);
-  display: flex;
-  align-items: center;
-  padding: 0.1em 0.2em;
-  border-radius: var(--border-radius-full);
-  position: relative;
-}
+/* .search-and-add-customer.alert {
+  background-color: red;
+} */
 
 .search-and-add-customer .icon {
   color: var(--color-text-brown);

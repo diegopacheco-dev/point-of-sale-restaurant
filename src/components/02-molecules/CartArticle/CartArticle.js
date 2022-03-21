@@ -7,9 +7,8 @@ import EditQuantity from "../EditQuantity/EditQuantity";
 import { CartContext } from "../../../context/states/CartState";
 
 const CartArticle = ({ item }) => {
-  const { UpdateQuantityItemAction, DeleteItemAction } = useContext(
-    CartContext
-  );
+  const { UpdateQuantityItemAction, DeleteItemAction } =
+    useContext(CartContext);
 
   return (
     <div className="cart-article">
@@ -21,6 +20,7 @@ const CartArticle = ({ item }) => {
         <div>
           <Heading size="xs">{item.nombre}</Heading>
           <ButtonIcon
+            className="btn-delete-active"
             nameIcon="x"
             sizeIcon="sm"
             action={() => DeleteItemAction(item.id)}

@@ -10,7 +10,7 @@ export const initialStateCart = {
   cliente: null,
   estado_pedido: "pendiente",
   fecha_creacion: "",
-  monto_pagado: 0,  
+  monto_pagado: 0,
   items: [],
 };
 

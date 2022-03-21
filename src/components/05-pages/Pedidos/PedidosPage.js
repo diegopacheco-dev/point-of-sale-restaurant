@@ -87,7 +87,6 @@ const PedidosPage = () => {
     });
 
     data.rows = filas.length > 0 ? filas : [];
-    console.log("data ", data);
     setDataPedidos(data);
   };
 
@@ -127,14 +126,20 @@ const PedidosPage = () => {
       {
         number: pedidos_totales,
         label: "Pedidos Totales",
+        iconName: "bar-chart-square",
+        iconColor: "",
       },
       {
         number: `S/ ${monto_vendido}`,
         label: "Monto Vendido",
+        iconName: "coin-stack",
+        iconColor: "",
       },
       {
         number: `S/ ${por_cobrar}`,
         label: "Por Cobrar",
+        iconName: "error-alt",
+        iconColor: "",
       },
     ];
     return stats;

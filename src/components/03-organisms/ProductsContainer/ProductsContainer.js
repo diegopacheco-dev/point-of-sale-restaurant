@@ -6,42 +6,32 @@ import Loader from "../../01-atoms/Loader/Loader";
 import ProductCard from "../../02-molecules/ProductCard/ProductCard";
 import "./styles.css";
 
-const ProductsContainer = ({ idCategoriaSeleccionada, AddItemAction }) => {
-  const [products, setProducts] = useState([]);
-  const [cargando, setCargando] = useState(false);
+const ProductsContainer = ({
+  idCategoriaSeleccionada,
+  AddItemAction,
+  loading,
+  productos,
+}) => {
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
 
   useEffect(() => {
-    const getProductosByIdCategoria = async () => {
-      try {
-        setCargando(true);
-        const consulta = query(
-          collection(db, "platos"),
-          where("categoria.id", "==", idCategoriaSeleccionada)
-        );
-        const { docs } = await getDocs(consulta);
-        console.log("docs", docs);
-        const data = docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setProducts(data);
-        setCargando(false);
-      } catch (err) {
-        console.log("error al consultar productos: ", err);
-        setCargando(false);
-      }
-    };
-    getProductosByIdCategoria();
+    setProductosFiltrados(
+      productos.filter(
+        (producto) => producto.categoria.id === idCategoriaSeleccionada
+      )
+    );
   }, [idCategoriaSeleccionada]);
 
   return (
     <div className="vertical-space-2">
       <Heading>Productos</Heading>
-      {!idCategoriaSeleccionada && !cargando ? <p>Selecciona una categoria</p> : null}
-      {cargando ? <Loader /> : null}
+      {!idCategoriaSeleccionada && !loading ? (
+        <p>Selecciona una categoria</p>
+      ) : null}
+      {loading ? <Loader /> : null}
       <div className="products-container">
-        {idCategoriaSeleccionada && !cargando
-          ? products.map((product) => {
+        {idCategoriaSeleccionada && !loading
+          ? productosFiltrados.map((product) => {
               return (
                 <ProductCard
                   key={product.id}
@@ -54,7 +44,9 @@ const ProductsContainer = ({ idCategoriaSeleccionada, AddItemAction }) => {
               );
             })
           : null}
-        {idCategoriaSeleccionada && !cargando && products.length === 0 ? (
+        {idCategoriaSeleccionada &&
+        !loading &&
+        productosFiltrados.length === 0 ? (
           <p>Sin productos en esta categoria</p>
         ) : null}
       </div>

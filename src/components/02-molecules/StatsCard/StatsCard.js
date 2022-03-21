@@ -14,14 +14,18 @@ const StatsCard = ({
   return (
     <div className="stats-card">
       <div className="stats-card__info">
-        {number === 0 ? <Loader style={{"padding-top": "0"}} size="xs" /> : <Heading>{number}</Heading>}
+        {number === 0 ? (
+          <Loader style={{ paddingTop: "0" }} size="xs" />
+        ) : (
+          <Heading>{number}</Heading>
+        )}
 
         <Heading size="xs" color="light">
           {title}
         </Heading>
       </div>
 
-      <div>
+      <div className="stats-card__icon">
         <IconElement name={iconName} color={iconColor} />
       </div>
     </div>

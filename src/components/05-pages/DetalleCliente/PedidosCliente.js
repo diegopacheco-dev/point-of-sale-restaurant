@@ -80,7 +80,6 @@ const PedidosCliente = () => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log("todos los pedidos ", data);
       if (Array.isArray(data)) {
         const pedidos = data.filter(
           (pedido) => pedido?.cliente?.id === cliente?.id
@@ -119,7 +118,6 @@ const PedidosCliente = () => {
       };
     });
     data.rows = filas.length > 0 ? filas : [];
-    console.log("data ", data);
     setPedidosCliente(data);
   };
 
@@ -143,7 +141,7 @@ const PedidosCliente = () => {
         <Heading align="center">Pedidos</Heading>
         <div className={styles.headerInfo}>
           <p>Cliente: </p>
-          <Heading size="sm">
+          <Heading className="mb-2" size="sm">
             {cliente?.nombre} {cliente?.apellidos}
           </Heading>
           <p>Celular: </p>
@@ -152,7 +150,11 @@ const PedidosCliente = () => {
       </div>
 
       <div className="body">
-        <DataTable shadow={false} data={pedidosCliente} loading={loadingPedidos} />
+        <DataTable
+          shadow={false}
+          data={pedidosCliente}
+          loading={loadingPedidos}
+        />
       </div>
     </div>
   );

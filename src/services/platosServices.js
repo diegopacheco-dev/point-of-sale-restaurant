@@ -19,6 +19,7 @@ export const usePlatosServices = () => {
   const getPlatos = async () => {
     setLoadingGet(true);
     try {
+      console.log("********** get Platos");
       const { docs } = await getDocs(collection(db, "platos"));
       const data = docs.map((doc) => ({
         id: doc.id,
@@ -86,6 +87,6 @@ export const usePlatosServices = () => {
     getPlatos,
     platos,
     loadingCreate,
-    loadingGet
+    loadingGet,
   };
 };

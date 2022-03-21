@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Heading from "../../01-atoms/Heading/Heading";
 import styles from "./styles.module.css";
 import Button from "../../01-atoms/Buttons/Button/Button";
-import Loader from "../../01-atoms/Loader/Loader";
 import ModalCrearProducto from "../../02-molecules/ModalCrearProducto/ModalCrearProducto";
 import DataTable from "../../03-organisms/DataTable/DataTable";
 import { usePlatosServices } from "../../../services/platosServices";
@@ -50,7 +49,7 @@ const AdministrarPage = () => {
     const filas = platos.map((plato) => ({
       imagen: <ImgPlato src={plato.imagen} />,
       nombre: plato.nombre,
-      categoria: plato.categoria.id,
+      categoria: plato.categoria.nombre,
       precio: plato.precio,
     }));
 

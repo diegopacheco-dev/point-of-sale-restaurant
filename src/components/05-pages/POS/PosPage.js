@@ -1,20 +1,34 @@
 import React, { useContext, useState } from "react";
-import ButtonIcon from "../../01-atoms/Buttons/ButtonIcon/ButtonIcon";
 import ButtonShowCart from "../../01-atoms/Buttons/ButtonShowCart/ButtonShowCart";
 import ChooseCategory from "../../03-organisms/ChooseCategory/ChooseCategory";
 import ProductsContainer from "../../03-organisms/ProductsContainer/ProductsContainer";
-import ShoppingCart from "../../03-organisms/ShoppingCart/ShoppingCart";
 import { CartContext } from "../../../context/states/CartState";
-import './styles.css'
-import OrderConfirmationBox from "../../03-organisms/OrderConfirmationBox/OrderConfirmationBox";
+import "./styles.css";
+import ShoppingCartBox from "../../03-organisms/ShoppingCartBox/ShoppingCartBox";
+import { useFetchFirestore } from "../../../hooks/useFetchFirestore";
 
 const PosPage = (props) => {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
-  const [showOrderConfirmationBox, setShowOrderConfirmationBox] = useState(
-    false
-  );
+  const [showOrderConfirmationBox, setShowOrderConfirmationBox] =
+    useState(false);
   const [idCategoriaSeleccionada, setIdCategoriaSeleccionada] = useState(null);
   const { AddItemAction, items, cliente } = useContext(CartContext);
+
+  // Consumiendo data categorias
+  const { data: categorias, loading: loadingCategorias } =
+    useFetchFirestore("categorias");
+
+  // Consumiendo data productos
+  const { data: productos, loading: loadingProductos } =
+    useFetchFirestore("platos");
+
+  const shoppingCartProps = {
+    showShoppingCart,
+    showOrderConfirmationBox,
+    cliente,
+    setShowShoppingCart,
+    setShowOrderConfirmationBox,
+  };
 
   return (
     <div className="pos-template">
@@ -25,33 +39,29 @@ const PosPage = (props) => {
         />
       </div>
 
-      <div className="pos-template__main-container">
+      <div
+        className="pos-template__main-container"
+        onClick={() => setShowShoppingCart(false)}
+      >
         <div className="header">
-          <ChooseCategory seleccionarCategoria={setIdCategoriaSeleccionada} />
+          <ChooseCategory
+            seleccionarCategoria={setIdCategoriaSeleccionada}
+            categorias={categorias}
+            loading={loadingCategorias}
+          />
         </div>
 
         <div className="body">
           <ProductsContainer
+            productos={productos}
+            loading={loadingProductos}
             AddItemAction={AddItemAction}
             idCategoriaSeleccionada={idCategoriaSeleccionada}
           />
         </div>
       </div>
 
-      <div
-        className={`pos-template__shoppingCart ${showShoppingCart && "show"}`}
-      >
-        <div className="btn-shoppingCart">
-          <ButtonIcon nameIcon="x" action={() => setShowShoppingCart(false)} />
-        </div>
-        {showOrderConfirmationBox && cliente ? (
-          <OrderConfirmationBox
-            onToggle={() => setShowOrderConfirmationBox(false)}
-          />
-        ) : (
-          <ShoppingCart action={() => setShowOrderConfirmationBox(true)} />
-        )}
-      </div>
+      <ShoppingCartBox {...shoppingCartProps} />
     </div>
   );
 };

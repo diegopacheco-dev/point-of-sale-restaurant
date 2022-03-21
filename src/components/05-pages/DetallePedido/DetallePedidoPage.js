@@ -47,7 +47,7 @@ const DetallePedidoPage = () => {
 
   const filas = pedido?.items?.map((plato) => ({
     plato: plato.nombre,
-    categoria: plato.categoria,
+    categoria: plato.categoria.nombre,
     cantidad: plato.cantidad,
     precio: plato.precio,
     total: plato.cantidad * plato.precio,
@@ -204,7 +204,7 @@ const DetallePedidoPage = () => {
       {/* Bottom Container  */}
 
       <div className="body-bottom">
-        <DataTable data={data} title="Platos" loading={false} />
+        <DataTable data={data} title="Platos" loading={false} shadow={false} />
         <div className="total">
           <Heading size="xs">Total</Heading>
           <Heading size="lg">

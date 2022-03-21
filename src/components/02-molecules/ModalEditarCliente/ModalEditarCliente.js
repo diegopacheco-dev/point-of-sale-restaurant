@@ -34,7 +34,6 @@ const ModalEditarCliente = ({
 
   const editarCliente = async () => {
     setLoading(true);
-    console.log("id cliente a editar ", cliente.id);
     try {
       await updateDoc(doc(db, "clientes", cliente?.id), formCliente);
       onToggle();

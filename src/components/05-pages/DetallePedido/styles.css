@@ -5,7 +5,7 @@ p {
 }
 
 .detalle-page {
-  background-color: white !important;
+  background-color: white;
   box-shadow: var(--box-shadow-md);
   border-radius: var(--border-radius-xl);
   max-width: 1000px;
@@ -31,9 +31,6 @@ div .detalle-page .header {
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   margin-bottom: 1.5rem;
-}
-
-.detalle-page .body-top .delivery-status {
 }
 
 .detalle-page .body-top .cliente {
@@ -66,14 +63,14 @@ div .detalle-page .header {
 
 .pulse-button-pagar {
   animation: pulse-pagar 1.4s infinite;
-  box-shadow: 0 0 0 0 rgba(#5a99d4, .5) !important;
+  box-shadow: 0 0 0 0 rgba(#5a99d4, 0.5) !important;
 }
 .pulse-button-pagar:hover {
-  animation: none;  
+  animation: none;
 }
 
 .badge-pedido.debe {
-  background-color: rgba(217,95,105,.2196078431372549);
+  background-color: rgba(217, 95, 105, 0.2196078431372549);
   color: #d95f69;
   border-radius: var(--border-radius-md);
   font-weight: 500;
@@ -82,7 +79,7 @@ div .detalle-page .header {
 }
 
 .badge-pedido.pagado {
-  background-color: rgba(62,181,149,.21960784313);
+  background-color: rgba(62, 181, 149, 0.21960784313);
   color: #3eb595;
   font-weight: 500;
   border-radius: var(--border-radius-md);
@@ -90,16 +87,41 @@ div .detalle-page .header {
 }
 
 @keyframes pulse-pagar {
-  0%{
-      transform: scale(0.9);
+  0% {
+    transform: scale(0.9);
   }
-  50%{
-      transform: scale(1);
-      box-shadow: 0 0 0 20px #f8bec31e;
+  50% {
+    transform: scale(1);
+    box-shadow: 0 0 0 20px #f8bec31e;
   }
-  100%{
-      transform: scale(0.9);
-      box-shadow: 0 0 0 0px #f8bec31e;
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0px #f8bec31e;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .detalle-page {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 4.8rem 1rem 0;
+    margin: 0;
+    width: 100vw;
+    height: fit-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    font-size: 15px;
   }
 
+  div .detalle-page .header {
+    margin-top: 0.4rem;
+  }
+
+  .detalle-page .body-top .cliente {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

@@ -6,7 +6,12 @@ const ShowStats = ({ stats = [], loading = false }) => {
   return (
     <div className="show-stats__container">
       {stats.map((stat) => (
-        <StatsCard key={stat.label} number={stat.number} title={stat.label} />
+        <StatsCard
+          key={stat.label}
+          iconName={stat.iconName}
+          number={stat.number}
+          title={stat.label}
+        />
       ))}
     </div>
   );

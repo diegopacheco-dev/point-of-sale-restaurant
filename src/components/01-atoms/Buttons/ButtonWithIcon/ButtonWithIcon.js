@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 const ButtonWithIcon = ({
   children = "Button",
+  className = "",
   type = "categoria",
   onClick = () => {},
   id = "",
@@ -13,7 +14,9 @@ const ButtonWithIcon = ({
 }) => {
   return (
     <div
-      className={`buttonWidthIcon ${type} ${id === idSelected && "active"}`}
+      className={`buttonWidthIcon ${type} ${
+        id === idSelected && "active"
+      } ${className}`}
       onClick={onClick}
     >
       <i className={`icon bx bx-${nameIcon} bx-${sizeIcon}`}></i>

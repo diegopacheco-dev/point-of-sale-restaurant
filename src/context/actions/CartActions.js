@@ -10,6 +10,8 @@ import {
 
 export const CartActions = (state, dispatch) => {
   const AddItemAction = (objItem) => {
+    console.log("AddItemAction *****************");
+    console.log(objItem);
     dispatch({ type: ADD, payload: objItem });
   };
 

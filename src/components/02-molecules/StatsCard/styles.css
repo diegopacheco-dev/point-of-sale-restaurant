@@ -2,16 +2,20 @@
   padding: 0.7em;
   display: flex;
   justify-content: space-between;
-  gap: 0.5rem;
   border-radius: var(--border-radius-2xl);
   border: solid 3px var(--color-secondary);
-  background-color: white;
 }
 
 .stats-card__info {
-    padding-top: 0.5rem;
+  padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  white-space: nowrap;
+  /* white-space: nowrap; */
+}
+
+@media screen and (min-width: 768px) {
+  .stats-card__icon {
+    display: initial;
+  }
 }

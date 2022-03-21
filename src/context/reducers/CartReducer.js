@@ -24,6 +24,7 @@ const CartReducer = (state, { type, payload }) => {
 
     let itemRepetido = items.find((item) => item.id === payload.id);
 
+    console.log("items ************", items);
     if (itemRepetido) {
       itemRepetido.cantidad++;
       return {
@@ -33,12 +34,8 @@ const CartReducer = (state, { type, payload }) => {
       };
     } else {
       items.push({
-        nombre: payload.nombre,
-        id: payload.id,
-        categoria: payload.categoria_id,
+        ...payload,
         cantidad: 1,
-        precio: payload.precio,
-        imagen: payload.imagen,
       });
 
       return {

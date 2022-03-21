@@ -12,6 +12,7 @@ const EditQuantity = ({
   return (
     <div className="edit-quantity">
       <ButtonIcon
+        className="edit-quantity__active"
         action={() => {
           if (cantidad > 1) {
             UpdateQuantityItemAction("subtract", idItem);
@@ -23,6 +24,7 @@ const EditQuantity = ({
       />
       <Heading size="sm">{cantidad.toString()}</Heading>
       <ButtonIcon
+        className="edit-quantity__active"
         action={() => UpdateQuantityItemAction("add", idItem)}
         nameIcon="chevron-up"
         type="secondary"

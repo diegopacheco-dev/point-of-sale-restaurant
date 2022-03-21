@@ -15,15 +15,16 @@ const DataTable = ({
       <Heading>{title}</Heading>
       {loading ? <Loader /> : null}
       {loading ? null : (
-        <div className={`table__wrapper ${shadow? 'shadow': ''}`}>
+        <div className={`table__wrapper ${shadow ? "shadow" : ""}`}>
           <MDBDataTableV5
-          noRecordsFoundLabel="Tabla vacia"
+            noRecordsFoundLabel="Tabla vacia"
             responsive
             striped
             hover
             data={data}
-            searchTop
             searchBottom={false}
+            paging={false}
+            info={false}
           />
         </div>
       )}

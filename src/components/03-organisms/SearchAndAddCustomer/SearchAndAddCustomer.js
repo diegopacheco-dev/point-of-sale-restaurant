@@ -6,7 +6,7 @@ import List from "../../02-molecules/List/List";
 import "./styles.css";
 import ModalCrearCliente from "../../02-molecules/ModalCrearCliente/ModalCrearCliente";
 
-const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
+const SearchAndAddCustomer = ({ SetClientePedido, isAlert = true }) => {
   const [sugerencias, setSugerencias] = useState([]);
   const [searchWord, setSearchWord] = useState("");
   const [clientes, setClientes] = useState([]);
@@ -52,7 +52,7 @@ const SearchAndAddCustomer = ({ SetClientePedido, isAlert = false }) => {
         isOpen={modalCrearCliente}
         reloadData={() => setReloadData((prev) => !prev)}
       />
-      <div className={`search-and-add-customer ${isAlert ? "alert" : ""}`}>
+      <div className={`search-and-add-customer ${isAlert ? "resaltar" : ""}`}>
         <i className={`icon bx bx-search bx-sm`}></i>
         <input
           type="text"

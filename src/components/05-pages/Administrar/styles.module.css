@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  font-size: 15px;
 }
 
 .column1 {
@@ -29,7 +30,6 @@
   padding: 1.5rem 1rem;
   box-shadow: var(--box-shadow-xl);
   width: 100%;
-
 }
 
 .administrar-page-template__col-1 .data-table__wrapper {

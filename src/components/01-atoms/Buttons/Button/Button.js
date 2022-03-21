@@ -8,14 +8,17 @@ const Button = ({
   variant = "primary",
   action = () => {},
   disabled = false,
+  className = "",
   ...props
 }) => {
   return (
     <button
       disabled={disabled}
       onClick={action}
-      className={`button ${size} ${variant}`}
       {...props}
+      className={`button ${size} ${variant} ${
+        disabled && "disabled"
+      } ${className}`}
     >
       {children}
     </button>

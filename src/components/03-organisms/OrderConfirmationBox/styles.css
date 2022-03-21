@@ -1,7 +1,7 @@
 .order-confirmation-box {
   background-color: white;
   box-shadow: var(--box-shadow-md);
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -9,18 +9,18 @@
 }
 
 .order-confirmation-box__header {
-  height: 8%;
+  height: 3rem;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   border-bottom: var(--border-bottom-1);
 }
 
 .order-confirmation-box__body {
-  height: 30%;
+  flex: 1;
 }
 
 .order-confirmation-box__footer {
-  height: 62%;
+  height: 24rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -31,7 +31,7 @@
 .order-confirmation-box__footer .status-order-buttons {
   display: flex;
   justify-content: flex-start;
-  width: 40%;
+  width: 70%;
   gap: 1rem;
   padding: 0.5rem 0;
 }
@@ -46,14 +46,31 @@
 .order-confirmation-box__footer .pay-buttons {
   display: flex;
   gap: 1rem;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   padding-top: 0.5rem;
+  height: 7rem;
+}
+
+.pay-buttons div:nth-child(1) {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.pay-buttons div:nth-child(2) {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagarTodo-button {
+  min-width: 100%;
+  flex: 1;
 }
 
 .order-confirmation-box__footer .pay-buttons .pay-fraction {
-  height: 100%;
   width: 100%;
+  flex: 1;
   padding: 0.5em;
   border-radius: var(--border-radius-2xl);
   cursor: pointer;
@@ -75,6 +92,8 @@
   background-color: var(--color-secondary);
   border: solid 3px var(--color-primary-light);
 }
+
+
 
 .order-confirmation-box__footer .confirmation-buttons {
   display: flex;

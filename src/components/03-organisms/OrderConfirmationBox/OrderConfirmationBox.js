@@ -42,14 +42,17 @@ const OrderConfirmationBox = ({ onToggle = () => {} }) => {
       if (rpta.isConfirmed) {
         setLoading(true);
         try {
-          const docRef = await addDoc(collection(db, "pedidos"), {
+          const pedido = {
             cliente,
             estado_pedido,
             monto_total,
             monto_pagado,
             items,
             fecha_creacion: serverTimestamp(),
-          });
+          };
+
+          console.log("pedido: ", pedido);
+          const docRef = await addDoc(collection(db, "pedidos"), { ...pedido });
           if (docRef.id) {
             cleanShoppingCartAction();
             onToggle();
@@ -67,7 +70,6 @@ const OrderConfirmationBox = ({ onToggle = () => {} }) => {
       }
     });
   };
-
 
   // Controla que el componente no se muestre cuando haya 0 items en el carrito
   useEffect(() => {
@@ -91,46 +93,62 @@ const OrderConfirmationBox = ({ onToggle = () => {} }) => {
       </div>
 
       <div className="order-confirmation-box__footer">
-        <Heading size="sm">Estado de Pedido</Heading>
-        <div className="status-order-buttons">
-          <Button
-            action={() => SetEstadoPedidoAction("pendiente")}
-            size="sm"
-            variant={`${estado_pedido === "entregado" ? "secondary" : "primary"}`}
-          >
-            Pendiente
-          </Button>
-          <Button
-            action={() => SetEstadoPedidoAction("entregado")}
-            size="sm"
-            variant={estado_pedido === "entregado" ? "primary" : "secondary"}
-          >
-            Entregado
-          </Button>
-        </div>
-        <div className="order-total">
-          <Heading size="sm">Total</Heading>
-          <Heading size="sm">S/ {monto_total.toString()}</Heading>
-        </div>
-        <Heading size="sm" align="center">
-          Pagar
-        </Heading>
-        <div className="pay-buttons">
-          <ButtonWithIcon
-            id="pagarCompleto"
-            idSelected={monto_pagado === monto_total ? "pagarCompleto" : ""}
-            onClick={() => SetPagarMontoAction(monto_total)}
-            type="categoria"
-          >
-            Pagar S/{monto_total}
-          </ButtonWithIcon>
-          <input
-            type="number"
-            className={`pay-fraction ${monto_pagado >= 0 ? "active" : ""}`}
-            value={monto_pagado}
-            onChange={handleChangeInputPagarMonto}
-            min="0"
-          />
+        <div>
+          <Heading size="sm">Estado de Pedido</Heading>
+          <div className="status-order-buttons">
+            <Button
+              action={() => SetEstadoPedidoAction("pendiente")}
+              size="sm"
+              variant={`${
+                estado_pedido === "entregado" ? "secondary" : "primary"
+              }`}
+            >
+              Pendiente
+            </Button>
+            <Button
+              action={() => SetEstadoPedidoAction("entregado")}
+              size="sm"
+              variant={estado_pedido === "entregado" ? "primary" : "secondary"}
+            >
+              Entregado
+            </Button>
+          </div>
+          <div className="order-total">
+            <Heading size="sm">Total</Heading>
+            <Heading size="sm">S/ {monto_total.toString()}</Heading>
+          </div>
+          <Heading size="sm" align="center">
+            Pagar
+          </Heading>
+          <div className="pay-buttons">
+            <div>
+              <Heading size="xs" align="center">
+                Completo
+              </Heading>
+              <ButtonWithIcon
+                nameIcon=""
+                className="pagarTodo-button"
+                id="pagarCompleto"
+                idSelected={monto_pagado === monto_total ? "pagarCompleto" : ""}
+                onClick={() => SetPagarMontoAction(monto_total)}
+                type="categoria"
+              >
+                S/{monto_total}
+              </ButtonWithIcon>
+            </div>
+            <div>
+              <Heading size="xs" align="center">
+                Una parte
+              </Heading>
+              <input
+                type="number"
+                className={`pay-fraction ${monto_pagado >= 0 ? "active" : ""}`}
+                value={monto_pagado}
+                onChange={handleChangeInputPagarMonto}
+                min="0"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="confirmation-buttons">

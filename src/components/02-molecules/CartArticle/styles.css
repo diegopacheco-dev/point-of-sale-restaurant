@@ -22,3 +22,6 @@
     height: 50%;
 }
 
+.btn-delete-active:active {
+    transform: scale(2);
+} 

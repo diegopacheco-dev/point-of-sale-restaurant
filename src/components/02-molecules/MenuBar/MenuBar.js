@@ -12,7 +12,7 @@ const MenuBar = ({ closeSidebar }) => {
       <ButtonWithIcon
         type="menu"
         onClick={() => {
-          location.pathname !== '/' && history.push("/");
+          location.pathname !== "/" && history.push("/");
           closeSidebar();
         }}
         id="/"
@@ -25,7 +25,7 @@ const MenuBar = ({ closeSidebar }) => {
       <ButtonWithIcon
         type="menu"
         onClick={() => {
-          location.pathname !== '/pedidos' && history.push("/pedidos");
+          location.pathname !== "/pedidos" && history.push("/pedidos");
           closeSidebar();
         }}
         idSelected={location.pathname}
@@ -38,7 +38,7 @@ const MenuBar = ({ closeSidebar }) => {
       <ButtonWithIcon
         type="menu"
         onClick={() => {
-          location.pathname !== '/clientes' && history.push("/clientes");
+          location.pathname !== "/clientes" && history.push("/clientes");
           closeSidebar();
         }}
         id="/clientes"
@@ -51,7 +51,7 @@ const MenuBar = ({ closeSidebar }) => {
       <ButtonWithIcon
         type="menu"
         onClick={() => {
-          location.pathname !== '/administrar' && history.push("/administrar");
+          location.pathname !== "/administrar" && history.push("/administrar");
           closeSidebar();
         }}
         id="/administrar"

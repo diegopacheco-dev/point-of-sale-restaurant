@@ -1,4 +1,9 @@
 .edit-quantity {
     display: flex;
     align-items: center;
+    gap: 1.4rem;
+}
+
+.edit-quantity__active:active {
+    transform: scale(2);
 }
